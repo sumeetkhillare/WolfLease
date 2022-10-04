@@ -1,3 +1,4 @@
+from ssl import OP_ENABLE_MIDDLEBOX_COMPAT
 from django.db import models
 import uuid
 
@@ -22,3 +23,12 @@ class Apartment(models.Model):
     address = models.CharField(max_length=256)
     facilities = models.CharField(max_length=512)
     owner_id = models.ForeignKey(to=Owner, on_delete=models.DO_NOTHING)
+
+class Lease(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    lease_start_date = models.DateField()
+    lease_end_date = models.DateField()
