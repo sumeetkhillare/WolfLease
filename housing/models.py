@@ -61,3 +61,8 @@ class User(models.Model):
     pref_smoking = models.CharField(default="N", max_length=2)
     pref_drinking = models.CharField(default="N", max_length=2)
     pref_veg = models.CharField(default="N", max_length=2)
+
+class Interested(models.Model):
+    apartment_id = models.ForeignKey(to=Apartment, on_delete=models.DO_NOTHING)
+    flat_id = models.ForeignKey(to=Flat, on_delete=models.DO_NOTHING)
+    user_id = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)
