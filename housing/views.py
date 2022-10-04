@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status, viewsets
-from housing.serializers import UserSerializer
+from housing.serializers import FlatSerializer, UserSerializer
 from housing.models import User
 from .models import Flat
 
@@ -14,4 +14,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class FlatViewSet(viewsets.ModelViewSet):
     queryset = Flat.objects.all()
+    serializer_class = FlatSerializer
     
