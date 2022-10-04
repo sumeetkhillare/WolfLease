@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import status, viewsets
 from housing.serializers import UserSerializer
 from housing.models import User
+from .models import Flat
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
@@ -10,3 +11,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class FlatViewSet(viewsets.ModelViewSet):
+    queryset = Flat.objects.all()
+    
