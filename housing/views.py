@@ -1,22 +1,22 @@
 from django.shortcuts import render
 from rest_framework import status, viewsets
 from housing.serializers import FlatSerializer, UserSerializer
-from housing.models import User
-from .models import Flat
+from housing import models
+
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
-    queryset = User.objects.all()
+    queryset = models.User.objects.all()
     serializer_class = UserSerializer
 
 class FlatViewSet(viewsets.ModelViewSet):
-    queryset = Flat.objects.all()
+    queryset = models.Flat.objects.all()
     serializer_class = FlatSerializer
 
 class OwnerViewSet(viewsets.ModelViewSet):
-    queryset = Owner.objects.all()
+    queryset = models.Owner.objects.all()
     serializer_class = OwnerSerializer
 
