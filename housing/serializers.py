@@ -19,3 +19,4 @@ class OwnerSerializer(serializers.ModelSerializer):
 class InterestedSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Interested
+        fields = '__all__'
