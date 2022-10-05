@@ -21,6 +21,6 @@ class OwnerViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.OwnerSerializer
 
 class InterestedViewSet(viewsets.ModelViewSet):
-    queryset = models.Owner.objects.all()
+    queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
