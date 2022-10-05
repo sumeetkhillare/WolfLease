@@ -15,4 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class FlatViewSet(viewsets.ModelViewSet):
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
+
+class OwnerViewSet(viewsets.ModelViewSet):
+    queryset = Owner.objects.all()
     
