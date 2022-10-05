@@ -10,3 +10,7 @@ class FlatSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Flat
         fields = '__all__'
+
+class OwnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Owner
