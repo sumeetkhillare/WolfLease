@@ -6,6 +6,7 @@ router = DefaultRouter()
 
 router.register(r'users', views.UserViewSet, basename="user_viewset")
 router.register(r'flats', views.FlatViewSet, basename="flat_viewset")
+router.register(r'owners', views.OwnerViewSet, basename="owner_viewset")
 
 urlpatterns = [
     path('', include(router.urls)),
