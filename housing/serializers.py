@@ -14,3 +14,4 @@ class FlatSerializer(serializers.ModelSerializer):
 class OwnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Owner
+        fields = '__all__'
