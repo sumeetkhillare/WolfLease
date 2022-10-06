@@ -27,4 +27,10 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test housing
+        coverage run manage.py test housing
+    - name: Generate Test Coverage
+      run: |
+        coverage report
+    - name: Generate HTML Pages for Test COverage
+      run: |
+        coverage html
