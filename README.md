@@ -2,7 +2,8 @@
 
 An application to help people find apartments/flats offering rooms on sublease
 
-<a href="https://github.com/subodh30/WolfLease/actions">![GitHub Workflow Status](https://img.shields.io/github/workflow/status/subodh30/WolfLease/Django%20CI)</a> ![GitHub](https://img.shields.io/github/license/subodh30/WolfLease) ![GitHub top language](https://img.shields.io/github/languages/top/subodh30/WolfLease) ![GitHub issues](https://img.shields.io/github/issues/subodh30/WolfLease) ![GitHub closed issues](https://img.shields.io/github/issues-closed/subodh30/WolfLease) 
+<a href="https://github.com/subodh30/WolfLease/actions">![GitHub Workflow Status](https://img.shields.io/github/workflow/status/subodh30/WolfLease/Django%20CI)</a>&nbsp;&nbsp; ![GitHub](https://img.shields.io/github/license/subodh30/WolfLease)&nbsp;&nbsp; ![GitHub top language](https://img.shields.io/github/languages/top/subodh30/WolfLease)&nbsp;&nbsp; ![GitHub issues](https://img.shields.io/github/issues/subodh30/WolfLease) ![GitHub closed issues](https://img.shields.io/github/issues-closed/subodh30/WolfLease)&nbsp;&nbsp; [![DOI](https://zenodo.org/badge/541323333.svg)](https://zenodo.org/badge/latestdoi/541323333)
+ 
 
 ## Getting started:
 
