@@ -20,3 +20,9 @@ class InterestedSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Interested
         fields = '__all__'
+
+
+class LeaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Lease
+        fields = '__all__'
