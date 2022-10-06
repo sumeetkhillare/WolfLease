@@ -28,5 +28,9 @@ jobs:
     - name: Run Tests
       run: |
         coverage run manage.py test housing
+    - name: Generate Test Coverage
+      run: |
         coverage report
+    - name: Generate HTML Pages for Test COverage
+      run: |
         coverage html
