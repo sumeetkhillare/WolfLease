@@ -1,3 +1,4 @@
+from enum import unique
 from ssl import OP_ENABLE_MIDDLEBOX_COMPAT
 from django.db import models
 import uuid
@@ -10,7 +11,7 @@ class Owner(models.Model):
         editable=False
     )
     contact_number = models.CharField(max_length=12)
-    contact_email = models.EmailField(max_length=30)
+    contact_email = models.EmailField(unique=True ,max_length=30)
     password = models.CharField(max_length=50)
 
 
@@ -53,7 +54,7 @@ class User(models.Model):
     )
     flat_id = models.ForeignKey(to=Flat, on_delete=models.DO_NOTHING)
     contact_number = models.CharField(max_length=12)
-    contact_email = models.EmailField(max_length=30)
+    contact_email = models.EmailField(unique=True, max_length=30)
     password = models.CharField(max_length=50)
     user_type = models.CharField(max_length=20, default="Guest")
     dob = models.DateField()
