@@ -14,5 +14,7 @@ router.register(r'lease', views.LeaseViewSet, basename='lease_viewset')
 urlpatterns = [
     path('', include(router.urls)),
     path('owners', views.OwnerViewSet.as_view()),
+    path('owners/<str:pk>', views.OwnerViewSet.as_view()),
     path('flats', views.FlatViewSet.as_view()),
+    path('flats/<str:pk>', views.FlatViewSet.as_view()),
 ]
