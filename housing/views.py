@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status, viewsets
+from rest_framework import filters, viewsets, generics
 from housing import serializers
 from housing import models
 
@@ -16,7 +16,9 @@ class FlatViewSet(viewsets.ModelViewSet):
     queryset = models.Flat.objects.all()
     serializer_class = serializers.FlatSerializer
 
-class OwnerViewSet(viewsets.ModelViewSet):
+class OwnerViewSet(generics.ListCreateAPIView):
+    search_fields = ['contact_email', 'contact_number', 'id']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Owner.objects.all()
     serializer_class = serializers.OwnerSerializer
 
