@@ -12,11 +12,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
 
-class FlatViewSet(viewsets.ModelViewSet):
+class FlatViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    search_fields = ['availability', 'rent_per_room']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Flat.objects.all()
     serializer_class = serializers.FlatSerializer
 
-class OwnerViewSet(generics.ListCreateAPIView):
+class OwnerViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     search_fields = ['contact_email', 'contact_number', 'id']
     filter_backends = (filters.SearchFilter,)
     queryset = models.Owner.objects.all()
