@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from itsdangerous import Serializer
 from rest_framework import status, viewsets
 from housing import serializers
 from housing import models
@@ -25,9 +24,6 @@ class InterestedViewSet(viewsets.ModelViewSet):
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
-class ApartmentViewSet(viewsets.ModelViewSet):
-    queryset = models.Apartment.objects.all()
-    serializer_class = serializers.ApartmentSerializer
 class LeaseViewSet(viewsets.ModelViewSet):
     queryset = models.Lease.objects.all()
     serializer_class = serializers.LeaseSerializer
