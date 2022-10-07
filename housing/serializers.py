@@ -26,3 +26,8 @@ class ApartmentSerializer(serializers.ModelSerializer):
         model = models.Apartment
         fields = '__all__'
 
+
+class LeaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Lease
+        fields = '__all__'

@@ -31,6 +31,18 @@ jobs:
     - name: Generate Test Coverage
       run: |
         coverage report
+        coverage json
     - name: Generate HTML Pages for Test COverage
       run: |
         coverage html
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: "c640c7b0-44f1-4c81-823a-ddfdc89ff703"
+        directory: ./htmlcov/
+        env_vars: OS,PYTHON
+        fail_ci_if_error: true
+        files: ./coverage.json
+        flags: unittests
+        name: codecov-umbrella
+        verbose: true
