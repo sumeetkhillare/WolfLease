@@ -21,13 +21,16 @@ class InterestedSerializer(serializers.ModelSerializer):
         model = models.Interested
         fields = '__all__'
 
+class ApartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Apartment
+        fields = '__all__'
+
 
 class LeaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Lease
         fields = '__all__'
-
-
 
 class ApartmentSerializer(serializers.ModelSerializer):
     class Meta:

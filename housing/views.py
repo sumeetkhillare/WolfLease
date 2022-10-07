@@ -25,6 +25,9 @@ class InterestedViewSet(viewsets.ModelViewSet):
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
+class ApartmentViewSet(viewsets.ModelViewSet):
+    queryset = models.Apartment.objects.all()
+    serializer_class = serializers.ApartmentSerializer
 class LeaseViewSet(viewsets.ModelViewSet):
     queryset = models.Lease.objects.all()
     serializer_class = serializers.LeaseSerializer
