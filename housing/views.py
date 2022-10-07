@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status, viewsets
+from rest_framework import filters, viewsets, generics
 from housing import serializers
 from housing import models
 
@@ -12,11 +12,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
 
-class FlatViewSet(viewsets.ModelViewSet):
+class FlatViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    search_fields = ['availability', 'rent_per_room']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Flat.objects.all()
     serializer_class = serializers.FlatSerializer
 
-class OwnerViewSet(viewsets.ModelViewSet):
+class OwnerViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    search_fields = ['contact_email', 'contact_number', 'id']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Owner.objects.all()
     serializer_class = serializers.OwnerSerializer
 
