@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from itsdangerous import Serializer
 from rest_framework import status, viewsets
 from housing import serializers
 from housing import models
