@@ -3,7 +3,11 @@ from ssl import OP_ENABLE_MIDDLEBOX_COMPAT
 from django.db import models
 import uuid
 
-# Create your models here.
+'''
+    Create your models here.
+
+'''
+
 class Owner(models.Model):
     id = models.UUIDField(
         primary_key=True,
