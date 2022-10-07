@@ -34,3 +34,5 @@ class LeaseViewSet(viewsets.ModelViewSet):
 class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
+
+    
