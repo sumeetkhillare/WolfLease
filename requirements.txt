@@ -9,3 +9,4 @@ PyYAML==6.0
 sqlparse==0.4.3
 tzdata==2022.2
 uritemplate==4.1.1
+coverage==6.5.0
