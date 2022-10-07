@@ -24,14 +24,17 @@ class OwnerViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPI
     queryset = models.Owner.objects.all()
     serializer_class = serializers.OwnerSerializer
 
-class InterestedViewSet(viewsets.ModelViewSet):
+class InterestedViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    search_fields = ['apartment_id', 'flat_id', 'user_id']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
-class LeaseViewSet(viewsets.ModelViewSet):
+class LeaseViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    search_fields = ['lease_start_date', 'lease_end_date']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Lease.objects.all()
     serializer_class = serializers.LeaseSerializer
-
 
 
 class ApartmentViewSet(viewsets.ModelViewSet):
