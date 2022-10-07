@@ -15,7 +15,7 @@ router.register(r'apartments', views.ApartmentViewSet, basename="apartment_views
 urlpatterns = [
     path('', include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('owners', views.OwnerViewSet.as_view()),
     path('owners/<str:pk>', views.OwnerViewSet.as_view()),
     path('flats', views.FlatViewSet.as_view()),
