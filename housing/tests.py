@@ -24,3 +24,30 @@ class OwnerTests(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Owner.objects.count(), 0)
+
+    def test_update_owner(self):
+        """
+        Ensure we can update a new Owner object.
+        """
+        url = '/owners/'
+        data = {'contact_number': '1234567890', 'contact_email': 'test@testing.com', 'password': 'test'}
+        response = self.client.post(url, data, format='json')
+        url = url + str(Owner.objects.get().id) + '/'
+        data = {'contact_number': '1234567890', 'contact_email': 'test123@testing.com', 'password': 'test'}
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Owner.objects.count(), 1)
+        self.assertEqual(Owner.objects.get().contact_email, 'test123@testing.com')
+
+    def test_delete_owner(self):
+        """
+        Ensure we can update a new Owner object.
+        """
+        url = '/owners/'
+        data = {'contact_number': '1234567890', 'contact_email': 'test@testing.com', 'password': 'test'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(Owner.objects.count(), 1)
+        url = url + str(Owner.objects.get().id) + '/'
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Owner.objects.count(), 0)
