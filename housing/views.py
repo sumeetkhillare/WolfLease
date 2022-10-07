@@ -2,9 +2,25 @@ from django.shortcuts import render
 from rest_framework import status, viewsets
 from housing import serializers
 from housing import models
-
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
+
+class UserAuthViewSet(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            'auth': str(request.auth),  # None
+        }
+        return Response(content)
+
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
@@ -27,7 +43,7 @@ class InterestedViewSet(viewsets.ModelViewSet):
 class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
+
 class LeaseViewSet(viewsets.ModelViewSet):
     queryset = models.Lease.objects.all()
     serializer_class = serializers.LeaseSerializer
-
