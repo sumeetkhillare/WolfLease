@@ -22,6 +22,6 @@ urlpatterns = [
     path('interests', views.InterestedViewSet.as_view()),
     path('interests/<str:pk>', views.InterestedViewSet.as_view()),
     path('apartments', views.ApartmentViewSet.as_view()),
-    path('owners/<str:pk>', views.ApartmentViewSet.as_view()),
-    
+    path('apartments/<str:pk>', views.ApartmentViewSet.as_view()),
+   
 ]

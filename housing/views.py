@@ -37,7 +37,7 @@ class LeaseViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPI
     serializer_class = serializers.LeaseSerializer
 
 
-class ApartmentViewSet(viewsets.ModelViewSet):
+class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     search_fields = ['address', 'facilities', 'owner_id']
     filter_backends = (filters.SearchFilter,)
     queryset = models.Apartment.objects.all()
