@@ -253,3 +253,21 @@ class ApartmentTests(APITestCase, TestCase):
         response = self.client.delete(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Apartment.objects.count(), 0)
+
+
+
+    def test_search_apartment(self):
+        """
+        Ensure that we can search Apartments with the given search parameters
+        """
+        Apartment.objects.create(address= '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', owner_id = str(Owner.objects.get().id))
+        url = '/apartments'
+        # need to test this out
+        url = url + '?search=' + str(Owner.objects.get().id)
+        response = self.client.get(url)
+        result = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]['address'], '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606')
+
+
