@@ -310,4 +310,19 @@ class UserTests(APITestCase, TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(User.objects.count(), 1)
 
-    
+    def test_update_user(self):
+        """
+        Ensure that the user is being updated correctly
+        """
+        # Creating a User record first
+        url = '/users'
+        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        # Now updating the data with updated phone number
+        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '9548751029', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(User.objects.count(), 1)
+        self.assertEqual(User.objects.get().contact_number, '9548751029')
