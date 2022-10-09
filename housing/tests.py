@@ -139,6 +139,20 @@ class InterestedTests(APITestCase, TestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Interested.objects.count(), 0)
 
+
+    def test_search_interested(self):
+        """
+        Ensure that we are able to search with given search parameters
+        """
+        url = '/interests'
+        url = url + '?search=' + str(Apartment.objects.get().id)
+        response = self.client.get(url)
+        result = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]['flat_id'], str(Flat.objects.get().id))
+         
+
 class FlatTests(APITestCase, TestCase):
 
     """
