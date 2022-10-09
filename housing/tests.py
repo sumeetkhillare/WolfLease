@@ -53,6 +53,17 @@ class OwnerTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Owner.objects.count(), 0)
 
+    def test_search_owner(self):
+        """
+        Ensure that we can search an Owner object
+        """
+        url = '/owners' + '?search=test222@gmail.com'
+        response = self.client.get(url)
+        result = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]['contact_number'], '22222')
+
 
 class InterestedTests(APITestCase, TestCase):
 
