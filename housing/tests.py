@@ -206,7 +206,7 @@ class FlatTests(APITestCase, TestCase):
         """
         Ensure that we can search a flat with given search paramaters
         """
-        Flat.objects.create(availability = 'True', associated_apt_id =  Apartment.objects.get(), lease_id = Lease.objects.get(), rent_per_room = 500, floor_number = 2)
+        Flat.objects.create(availability = 'True', associated_apt_id =  Apartment.objects.get().id, lease_id = Lease.objects.get().id, rent_per_room = 500, floor_number = 2)
         url = '/flats'
         url = url + '?search=500'
         response = self.client.get(url)
@@ -270,8 +270,8 @@ class ApartmentTests(APITestCase, TestCase):
 
         url = '/apartments'
         url = url + '/' + str(Apartment.objects.get().id)
-        data = {}
-        response = self.client.delete(url, data, format='json')
+        # data = {}
+        response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Apartment.objects.count(), 0)
 
@@ -281,7 +281,7 @@ class ApartmentTests(APITestCase, TestCase):
         """
         Ensure that we can search Apartments with the given search parameters
         """
-        Apartment.objects.create(address= '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', owner_id = str(Owner.objects.get().id))
+        Apartment.objects.create(address= '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', owner_id = Owner.objects.get().id)
         url = '/apartments'
         # need to test this out
         url = url + '?search=' + str(Owner.objects.get().id)
