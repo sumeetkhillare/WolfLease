@@ -206,7 +206,7 @@ class FlatTests(APITestCase, TestCase):
         """
         Ensure that we can search a flat with given search paramaters
         """
-        Flat.objects.create(availability = 'True', associated_apt_id =  str(Apartment.objects.get().id), lease_id = str(Lease.objects.get().id)  ,rent_per_room = 500, floor_number = 2)
+        Flat.objects.create(availability = 'True', associated_apt_id =  Apartment.objects.get(), lease_id = Lease.objects.get(), rent_per_room = 500, floor_number = 2)
         url = '/flats'
         url = url + '?search=500'
         response = self.client.get(url)
