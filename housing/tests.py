@@ -295,15 +295,17 @@ class ApartmentTests(APITestCase, TestCase):
         """
         Ensure that we can search Apartments with the given search parameters
         """
-        Apartment.objects.create(address= '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', owner_id = Owner.objects.get().id)
+        Apartment.objects.create(address= 'ClarionHeights', facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', owner_id = Owner.objects.get())
+
         url = '/apartments'
         # need to test this out
-        url = url + '?search=' + str(Owner.objects.get().id)
+        url = url + '?search=ClarionHeights'
         response = self.client.get(url)
+        print('Content: '+str(response.content))
         result = json.loads(response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(result), 1)
-        self.assertEqual(result[0]['address'], '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606')
+        self.assertEqual(result[0]['facilities'], 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym')
 
 
 class UserTests(APITestCase, TestCase):
