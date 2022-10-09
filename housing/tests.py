@@ -300,9 +300,13 @@ class ApartmentTests(APITestCase, TestCase):
 class UserTests(APITestCase, TestCase):
 
     @classmethod
-    def setUpTestData(cls):        
+    def setUpTestData(cls):     
+        cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
+
+        cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
+        cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Flat = Flat.objects.create(availability='True', associated_apt_id=Apartment.objects.get(), lease_id=Lease.objects.get(), floor_number=3, rent_per_room=450)
-        
+        cls.User = User.objects.create(flat_id = Flat.objects.get(), contact_number= '7876756487', contact_email= 'rohan@gmail.com',  dob = '2000-10-07')
 
     def test_create_user(self):
         """
@@ -310,11 +314,10 @@ class UserTests(APITestCase, TestCase):
         """
 
         url = '/users'
-        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        data = {'flat_id' : str(Flat.objects.get().id), 'contact_number': '8454210259', 'contact_email': 'ameya@gmail.com', 'password' : 'password' ,'dob' : '2000-08-08'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(User.objects.count(), 1) 
-        self.assertEqual('7876756487', str(User.objects.filter(contact_email = 'rohan@gmail.com').get().contact_number))
+        self.assertEqual(User.objects.count(), 2) 
 
     
     def test_show_user(self):
@@ -322,9 +325,7 @@ class UserTests(APITestCase, TestCase):
         Ensure that we are able to retrieve the user details
         """
         url = '/users'
-        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
 
         response = self.client.get(url)
 
@@ -337,8 +338,7 @@ class UserTests(APITestCase, TestCase):
         """
         # Creating a User record first
         url = '/users'
-        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
-        response = self.client.post(url, data, format='json')
+        
         # self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Now updating the data with updated phone number
@@ -355,9 +355,6 @@ class UserTests(APITestCase, TestCase):
         """
         # Creating the user first 
         url = '/users'
-        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
         # Deleting the user
@@ -370,11 +367,11 @@ class UserTests(APITestCase, TestCase):
 
     def test_search_user(self):
         """
-        Ensure that a user can be deleted
+        Ensure that a user can be searched
         """
-        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '7876756487', contact_email= 'rohan@gmail.com',  dob = '2000-10-07')
-        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '8454210289', contact_email= 'om@gmail.com',  dob = '2000-05-17')
-        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '5165151651', contact_email= 'subodh@gmail.com',  dob = '2000-12-06')
+        User.objects.create(flat_id = Flat.objects.get(), contact_number= '7876756487', contact_email= 'kunal@gmail.com',  dob = '2000-10-07')
+        User.objects.create(flat_id = Flat.objects.get(), contact_number= '8454210289', contact_email= 'om@gmail.com',  dob = '2000-05-17')
+        User.objects.create(flat_id = Flat.objects.get(), contact_number= '5165151651', contact_email= 'subodh@gmail.com',  dob = '2000-12-06')
 
         url = '/users'
         url = url + '?search=subodh@gmail.com'
