@@ -5,6 +5,18 @@ An application service to help people find apartments/flats offering rooms on su
 <a href="https://github.com/subodh30/WolfLease/actions">![GitHub Workflow Status](https://img.shields.io/github/workflow/status/subodh30/WolfLease/Django%20CI)</a>&nbsp;&nbsp; <a href="https://opensource.org/licenses/MIT">![GitHub](https://img.shields.io/github/license/subodh30/WolfLease)</a>&nbsp;&nbsp; ![GitHub top language](https://img.shields.io/github/languages/top/subodh30/WolfLease)&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues">![GitHub issues](https://img.shields.io/github/issues/subodh30/WolfLease)</a>&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues?q=is%3Aissue+is%3Aclosed">![GitHub closed issues](https://img.shields.io/github/issues-closed/subodh30/WolfLease)</a>&nbsp;&nbsp; [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178274.svg)](https://doi.org/10.5281/zenodo.7178274)&nbsp;&nbsp; [![codecov](https://codecov.io/gh/subodh30/WolfLease/branch/master/graph/badge.svg?token=65T3AK0FVG)](https://codecov.io/gh/subodh30/WolfLease)
  
 
+
+- ## Built with
+  <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>
+  <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" width="40" height="40"/>
+
+- **Language used:** Python
+- **Libraries used:** Django
+
+
+## Visual Walkthrough:
+https://user-images.githubusercontent.com/65619749/134620802-5fac9f0e-d697-49df-876c-3f5ff7d86e38.mp4
+
 ## Getting started:
 
   - ### Prerequisite:
@@ -103,15 +115,24 @@ An application service to help people find apartments/flats offering rooms on su
 |`GET`|http://localhost:8000/interests | Get all Interests |
 |`DELETE`|http://localhost:8000/interests/{interestID} | Delete Interest by ID |
 
-## Searching through Flats and Apartments
+## Searching through Owners, Apartments, Lease, Flats, User and Interested Models
 
 |HTTP Method|URL|Description|
 |---|---|---|
-|`GET`|http://localhost:8000/flats?search={availabilty} | Search for Flats that are available |
-|`GET`|http://localhost:8000/flats?search={rent_per_room} | Search for Flats by rent amount |
+|`GET`|http://localhost:8000/owners?search={email} | Search for an Owner with given email |
+|`GET`|http://localhost:8000/owners?search={contact_number} | Search for an Owner with given contact number |
 |`GET`|http://localhost:8000/apartments?search={address} | Search for Apartments by address |
 |`GET`|http://localhost:8000/apartments?search={facilities} | Search for Apartments with different facilities of your choice |
 |`GET`|http://localhost:8000/apartments?search={owner} | Search for Apartments by owner |
+|`GET`|http://localhost:8000/lease?search={lease_end_date} | Search for Lease by end date |
+|`GET`|http://localhost:8000/lease?search={lease_start_date} | Search for Lease by start date |
+|`GET`|http://localhost:8000/flats?search={availabilty} | Search for Flats that are available |
+|`GET`|http://localhost:8000/flats?search={rent_per_room} | Search for Flats by rent amount |
+|`GET`|http://localhost:8000/users?search={email} | Search for an User with given email |
+|`GET`|http://localhost:8000/users?search={contact_number} | Search for a User with given contact number |
+|`GET`|http://localhost:8000/interests?search={apartment_id} | Search for a list of Users interested in the given Apartment |
+|`GET`|http://localhost:8000/interests?search={flat_id} | Search for a list of Users interested in the given flat |
+|`GET`|http://localhost:8000/interests?search={user_id} | Search for a list of Flats/Apartments that the given user is interested in |
 ## Team Members
 [Subodh Gujar](https://github.com/subodh30)
 
