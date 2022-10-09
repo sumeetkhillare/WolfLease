@@ -43,4 +43,3 @@ class LeaseViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPI
 class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
-
