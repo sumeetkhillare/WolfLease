@@ -344,3 +344,21 @@ class UserTests(APITestCase, TestCase):
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(User.objects.count(), 0)
+
+
+
+    def test_search_user(self):
+        """
+        Ensure that a user can be deleted
+        """
+        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '7876756487', contact_email= 'rohan@gmail.com',  dob = '2000-10-07')
+        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '8454210289', contact_email= 'om@gmail.com',  dob = '2000-05-17')
+        User.objects.create(flat_id = Flat.objects.get().id, contact_number= '5165151651', contact_email= 'subodh@gmail.com',  dob = '2000-12-06')
+
+        url = '/users'
+        url = url + '?search=subodh@gmail.com'
+        response = self.client.get(url)
+        result = json.loads(response.content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]['contact_number'], '5165151651')
