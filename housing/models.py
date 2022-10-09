@@ -4,11 +4,15 @@ from django.db import models
 import uuid
 
 '''
+    This is the database strcuture of the models.
     Create your models here.
 
 '''
 
 class Owner(models.Model):
+    """
+    This is Owner database structure.
+    """
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -20,6 +24,9 @@ class Owner(models.Model):
 
 
 class Apartment(models.Model):
+    """
+    This is Apartment database structure.
+    """
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -30,6 +37,10 @@ class Apartment(models.Model):
     owner_id = models.ForeignKey(to=Owner, on_delete=models.DO_NOTHING)
 
 class Lease(models.Model):
+
+    """
+    This is Lease database structure.
+    """
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -39,6 +50,9 @@ class Lease(models.Model):
     lease_end_date = models.DateField()
 
 class Flat(models.Model):
+    """
+    This is Flat database structure.
+    """
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -51,6 +65,9 @@ class Flat(models.Model):
     floor_number = models.IntegerField()
 
 class User(models.Model):
+    """
+    This is User database structure.
+    """
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -68,9 +85,15 @@ class User(models.Model):
     pref_veg = models.CharField(default="N", max_length=2)
 
     def __str__(self):
+        """
+        This is used for login using email.
+        """
         return self.contact_email
 
 class Interested(models.Model):
+    """
+    This is Interested database structure.
+    """
     apartment_id = models.ForeignKey(to=Apartment, on_delete=models.DO_NOTHING)
     flat_id = models.ForeignKey(to=Flat, on_delete=models.CASCADE)
     user_id = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)
