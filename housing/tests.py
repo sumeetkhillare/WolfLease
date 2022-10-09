@@ -193,3 +193,29 @@ class FlatTests(APITestCase, TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]['availability'], 'True')
+
+
+class ApartmentTests(APITestCase, TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
+        cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
+        cls.Flat = Flat.objects.create(availability='False', associated_apt_id=Apartment.objects.get(), lease_id=Lease.objects.get(), floor_number=3, rent_per_room=450)
+        cls.User = User.objects.create(flat_id = Flat.objects.get(), contact_number='7876756487', dob='2000-10-07')
+        cls.Intested = Interested.objects.create(user_id = User.objects.get(), flat_id = Flat.objects.get(), apartment_id = Apartment.objects.get())
+
+    def test_create_apartment(self):
+        """
+        Ensure that we can create a new Apartment Object
+        """
+
+        url = '/apartments'
+        data = {'address': '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', 'facilities' : 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym', 'owner_id' : str(Owner.objects.get().id)}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Apartment.objects.count(), 2) #this is because we already created an object in the setup function and other one is right in this function
+        self.assertEqual('1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', str(Apartment.objects.filter(facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym').get().address))
+
+    
