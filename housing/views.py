@@ -44,8 +44,6 @@ class InterestedViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestr
     """
     This viewset automatically provides CRUD actions for Interested model.
     """
-    search_fields = ['apartment_id', 'flat_id', 'user_id']
-    filter_backends = (filters.SearchFilter,)
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
@@ -64,7 +62,7 @@ class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestro
     This viewset automatically provides CRUD actions for Apartment model.
     """
 
-    search_fields = ['address', 'facilities', 'owner_id']
+    search_fields = ['address', 'facilities']
     filter_backends = (filters.SearchFilter,)
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer

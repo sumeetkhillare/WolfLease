@@ -31,10 +31,11 @@ class Apartment(models.Model):
         primary_key=True,
         default=uuid.uuid4,
         editable=False
+        
     )
     address = models.CharField(max_length=256)
     facilities = models.CharField(max_length=512)
-    owner_id = models.ForeignKey(to=Owner, on_delete=models.DO_NOTHING)
+    owner_id = models.ForeignKey(to=Owner, null=True,on_delete=models.SET_NULL)
 
 class Lease(models.Model):
 
@@ -59,8 +60,8 @@ class Flat(models.Model):
         editable=False
     )
     availability = models.BooleanField(default=False)
-    associated_apt_id = models.ForeignKey(to=Apartment, on_delete=models.DO_NOTHING)
-    lease_id = models.ForeignKey(to=Lease, on_delete=models.DO_NOTHING)
+    associated_apt_id = models.ForeignKey(to=Apartment, on_delete=models.CASCADE)
+    lease_id = models.ForeignKey(to=Lease, null=True, on_delete=models.SET_NULL)
     rent_per_room = models.IntegerField()
     floor_number = models.IntegerField()
 
