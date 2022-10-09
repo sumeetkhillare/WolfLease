@@ -53,6 +53,7 @@ class OwnerTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Owner.objects.count(), 0)
 
+
 class InterestedTests(APITestCase, TestCase):
 
     @classmethod
