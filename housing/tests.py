@@ -63,7 +63,7 @@ class OwnerTests(APITestCase):
         Owner.objects.create(contact_number = '22222', contact_email = 'test222@testing.com', password='test123')
         Owner.objects.create(contact_number = '33333', contact_email = 'test333@testing.com', password='test123')
         url = '/owners'
-        url = url + '?search=test222@gmail.com'
+        url = url + '?search=test222@testing.com'
         response = self.client.get(url)
         result = json.loads(response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
