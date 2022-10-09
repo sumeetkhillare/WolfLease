@@ -271,3 +271,43 @@ class ApartmentTests(APITestCase, TestCase):
         self.assertEqual(result[0]['address'], '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606')
 
 
+class UserTests(APITestCase, TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
+        cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
+        cls.Flat = Flat.objects.create(availability='True', associated_apt_id=Apartment.objects.get(), lease_id=Lease.objects.get(), floor_number=3, rent_per_room=450)
+        # cls.User = User.objects.create(flat_id = Flat.objects.get(), contact_number='7876756487', dob='2000-10-07')
+        cls.Intested = Interested.objects.create(user_id = User.objects.get(), flat_id = Flat.objects.get(), apartment_id = Apartment.objects.get())
+        cls.otherFlat = Flat.objects.create(availability='True', associated_apt_id=Apartment.objects.get(), lease_id=Lease.objects.get(), floor_number=2, rent_per_room=780)
+
+    def test_create_user(self):
+        """
+        Ensure that we can create a user
+        """
+
+        url = '/users'
+        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(User.objects.count(), 1) 
+        self.assertEqual('7876756487', str(User.objects.filter(contact_email = 'rohan@gmail.com').get().contact_number))
+
+    
+    def test_show_user(self):
+        """
+        Ensure that we are able to retrieve the user details
+        """
+        url = '/users'
+        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(User.objects.count(), 1)
+
+    
