@@ -269,7 +269,7 @@ class ApartmentTests(APITestCase, TestCase):
         """
 
         url = '/apartments'
-        url = url + '/' + '1'
+        url = url + '/' + str(Apartment.objects.get().id)
         data = {}
         response = self.client.delete(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
