@@ -1,6 +1,6 @@
 # WolfLease
 
-An application to help people find apartments/flats offering rooms on sublease
+An application service to help people find apartments/flats offering rooms on sublease
 
 <a href="https://github.com/subodh30/WolfLease/actions">![GitHub Workflow Status](https://img.shields.io/github/workflow/status/subodh30/WolfLease/Django%20CI)</a>&nbsp;&nbsp; <a href="https://opensource.org/licenses/MIT">![GitHub](https://img.shields.io/github/license/subodh30/WolfLease)</a>&nbsp;&nbsp; ![GitHub top language](https://img.shields.io/github/languages/top/subodh30/WolfLease)&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues">![GitHub issues](https://img.shields.io/github/issues/subodh30/WolfLease)</a>&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues?q=is%3Aissue+is%3Aclosed">![GitHub closed issues](https://img.shields.io/github/issues-closed/subodh30/WolfLease)</a>&nbsp;&nbsp; [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178274.svg)](https://doi.org/10.5281/zenodo.7178274)&nbsp;&nbsp; [![codecov](https://codecov.io/gh/subodh30/WolfLease/branch/master/graph/badge.svg?token=65T3AK0FVG)](https://codecov.io/gh/subodh30/WolfLease)
  
@@ -39,7 +39,8 @@ An application to help people find apartments/flats offering rooms on sublease
      - Site will be hosted at:
        `http://127.0.0.1:8000/`
 
-### Endpoints
+
+## WolfLease Endpoints
 
 #### Admin page
 
@@ -53,7 +54,7 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/owners | Create new Owner |
 |`PUT`|http://localhost:8000/owners/{ownerId} | Update Owner by ID |
-|`GET`|http://localhost:8000/owners/ | Get all Owners |
+|`GET`|http://localhost:8000/owners | Get all Owners |
 |`DELETE`|http://localhost:8000/owners/{ownerId} | Delete Owner by ID |
 
 #### Apartment
@@ -62,7 +63,7 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/apartments | Create a new Apartment |
 |`PUT`|http://localhost:8000/apartments/{apartmentID} | Update Apartment by ID |
-|`GET`|http://localhost:8000/apartments/ | Get all Apartments |
+|`GET`|http://localhost:8000/apartments | Get all Apartments |
 |`DELETE`|http://localhost:8000/apartments/{apartmentID} | Delete Apartment by ID |
 
 #### Lease
@@ -71,7 +72,7 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/lease | Create a new Lease |
 |`PUT`|http://localhost:8000/lease/{LeaseID} | Update Lease by ID |
-|`GET`|http://localhost:8000/lease/ | Get all lease |
+|`GET`|http://localhost:8000/lease | Get all lease |
 |`DELETE`|http://localhost:8000/lease/{LeaseID} | Delete Lease by ID |
 
 #### Flat
@@ -80,7 +81,7 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/flats | Create a new Flat |
 |`PUT`|http://localhost:8000/flats/{flatID} | Update Flat by ID |
-|`GET`|http://localhost:8000/flats/ | Get all Flats |
+|`GET`|http://localhost:8000/flats | Get all Flats |
 |`DELETE`|http://localhost:8000/flats/{flatID} | Delete Flat by ID |
 
 
@@ -90,7 +91,7 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/users | Create a new User |
 |`PUT`|http://localhost:8000/users/{userID} | Update User by ID |
-|`GET`|http://localhost:8000/users/ | Get all Users |
+|`GET`|http://localhost:8000/users | Get all Users |
 |`DELETE`|http://localhost:8000/users/{userID} | Delete User by ID |
 
 #### Interested
@@ -99,9 +100,18 @@ An application to help people find apartments/flats offering rooms on sublease
 |---|---|---|
 |`POST`|http://localhost:8000/interests | Create a new Interest |
 |`PUT`|http://localhost:8000/interests/{interestID} | Update Interest by ID |
-|`GET`|http://localhost:8000/interests/ | Get all Interests |
+|`GET`|http://localhost:8000/interests | Get all Interests |
 |`DELETE`|http://localhost:8000/interests/{interestID} | Delete Interest by ID |
 
+## Searching through Flats and Apartments
+
+|HTTP Method|URL|Description|
+|---|---|---|
+|`GET`|http://localhost:8000/flats?search={availabilty} | Search for Flats that are available |
+|`GET`|http://localhost:8000/flats?search={rent_per_room} | Search for Flats by rent amount |
+|`GET`|http://localhost:8000/apartments?search={address} | Search for Apartments by address |
+|`GET`|http://localhost:8000/apartments?search={facilities} | Search for Apartments with different facilities of your choice |
+|`GET`|http://localhost:8000/apartments?search={owner} | Search for Apartments by owner |
 ## Team Members
 [Subodh Gujar](https://github.com/subodh30)
 
