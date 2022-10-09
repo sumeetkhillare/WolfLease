@@ -58,6 +58,10 @@ class OwnerTests(APITestCase):
         """
         Ensure that we can search an Owner object
         """
+        # Creating objects for this testcase
+        Owner.objects.create(contact_number = '11111', contact_email = 'test111@testing.com', password='test123')
+        Owner.objects.create(contact_number = '22222', contact_email = 'test222@testing.com', password='test123')
+        Owner.objects.create(contact_number = '33333', contact_email = 'test333@testing.com', password='test123')
         url = '/owners' + '?search=test222@gmail.com'
         response = self.client.get(url)
         result = json.loads(response.content)
@@ -176,3 +180,8 @@ class FlatTests(APITestCase, TestCase):
         
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Flat.objects.count(), 0)
+
+    def test_search_flat(self):
+        """
+        Ensure that we can search a flat with given search paramaters
+        """
