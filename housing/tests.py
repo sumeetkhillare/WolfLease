@@ -5,7 +5,14 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from housing.models import *
 
+"""
+    This is a file to add test cases for different models.
+"""
+
 class OwnerTests(APITestCase):
+    """
+        This is Owner test class.
+    """
     def test_create_owner(self):
         """
         Ensure we can create a new Owner object.
@@ -55,9 +62,15 @@ class OwnerTests(APITestCase):
 
 
 class InterestedTests(APITestCase, TestCase):
+    """
+        This is Interested test class.
+    """
 
     @classmethod
     def setUpTestData(cls):
+        """
+            This is setUp class method to populate the database
+        """
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
         cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
@@ -111,8 +124,15 @@ class InterestedTests(APITestCase, TestCase):
 
 class FlatTests(APITestCase, TestCase):
 
+    """
+        This is Flat test class.
+    """
+
     @classmethod
     def setUpTestData(cls):
+        """
+            This is setUp class method to populate the database
+        """
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
         cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
@@ -166,6 +186,10 @@ class FlatTests(APITestCase, TestCase):
         self.assertEqual(Flat.objects.count(), 0)
 
 class LeaseTests(APITestCase, TestCase):
+
+    """
+        This is Lease test class.
+    """
 
     def test_create_lease(self):
         """
