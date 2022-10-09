@@ -56,7 +56,7 @@ class User(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    flat_id = models.ForeignKey(to=Flat, on_delete=models.DO_NOTHING)
+    flat_id = models.ForeignKey(to=Flat,null=True, on_delete=models.SET_NULL)
     contact_number = models.CharField(max_length=12)
     contact_email = models.EmailField(unique=True, max_length=30)
     password = models.CharField(max_length=50)
@@ -72,5 +72,5 @@ class User(models.Model):
 
 class Interested(models.Model):
     apartment_id = models.ForeignKey(to=Apartment, on_delete=models.DO_NOTHING)
-    flat_id = models.ForeignKey(to=Flat, on_delete=models.DO_NOTHING)
+    flat_id = models.ForeignKey(to=Flat, on_delete=models.CASCADE)
     user_id = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)

@@ -8,10 +8,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Create your views here.
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
+
+# Add search fields to the user view set
+    search_fields = ['contact_email', 'contact_number']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
 
@@ -40,6 +44,9 @@ class LeaseViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPI
     serializer_class = serializers.LeaseSerializer
 
 
-class ApartmentViewSet(viewsets.ModelViewSet):
+class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+
+    search_fields = ['address', 'facilities', 'owner_id']
+    filter_backends = (filters.SearchFilter,)
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
