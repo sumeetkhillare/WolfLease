@@ -218,4 +218,25 @@ class ApartmentTests(APITestCase, TestCase):
         self.assertEqual(Apartment.objects.count(), 2) #this is because we already created an object in the setup function and other one is right in this function
         self.assertEqual('1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606', str(Apartment.objects.filter(facilities = 'Washer, Dryer, Oven, Swimming Pool, Club House, Gym').get().address))
 
-    
+    def test_show_apartment(self):
+        """
+        Ensure that we are retrieve an apartment object
+        """
+
+        url = '/apartments'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Apartment.objects.count(), 1)
+
+
+    def test_update_apartment(self):
+        """
+        Ensure we can update the apartment info
+        """
+        url = '/apartments'
+        url = url + '/' + '1'
+        data = {'address': '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606'}
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Apartment.objects.count(), 1)
+        self.assertEqual(Apartment.objects.get().address, '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606')
