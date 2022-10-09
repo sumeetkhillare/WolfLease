@@ -4,6 +4,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from housing.models import *
+import json
 
 class OwnerTests(APITestCase):
     def test_create_owner(self):
