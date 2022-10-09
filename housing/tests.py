@@ -5,7 +5,14 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from housing.models import *
 
+"""
+    This is a file to add test cases for different models.
+"""
+
 class OwnerTests(APITestCase):
+    """
+        This is Owner test class.
+    """
     def test_create_owner(self):
         """
         Ensure we can create a new Owner object.
@@ -55,9 +62,15 @@ class OwnerTests(APITestCase):
 
 
 class InterestedTests(APITestCase, TestCase):
+    """
+        This is Interested test class.
+    """
 
     @classmethod
     def setUpTestData(cls):
+        """
+            This is setUp class method to populate the database
+        """
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
         cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
@@ -111,8 +124,15 @@ class InterestedTests(APITestCase, TestCase):
 
 class FlatTests(APITestCase, TestCase):
 
+    """
+        This is Flat test class.
+    """
+
     @classmethod
     def setUpTestData(cls):
+        """
+            This is setUp class method to populate the database
+        """
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
         cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
@@ -164,3 +184,54 @@ class FlatTests(APITestCase, TestCase):
         
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Flat.objects.count(), 0)
+
+class LeaseTests(APITestCase, TestCase):
+
+    """
+        This is Lease test class.
+    """
+
+    def test_create_lease(self):
+        """
+        Ensure we can create a new Lease object.
+        """
+        url = '/lease'
+        data = {"lease_start_date": "2022-10-05", "lease_end_date": '2026-10-04'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Lease.objects.count(), 1)
+
+    def test_show_lease(self):
+        """
+        Ensure we can fetch a Lease object.
+        """
+        url = '/lease'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Lease.objects.count(), 0)
+
+    def test_update_lease(self):
+        """
+        Ensure we can update a lease object.
+        """
+        url = '/lease'
+        Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        url = url +'/'+ str(Lease.objects.get().id) 
+        data = {"lease_start_date": '2022-12-05'}
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Lease.objects.count(), 1)
+
+    def test_delete_lease(self):
+        """
+        Ensure we can delete a lease object.
+        """
+        url = '/lease'
+        Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        url = url + '/' + str(Lease.objects.get().id)
+        response = self.client.delete(url)
+        
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Lease.objects.count(), 0)
+
+
