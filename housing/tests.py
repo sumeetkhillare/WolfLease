@@ -164,3 +164,50 @@ class FlatTests(APITestCase, TestCase):
         
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Flat.objects.count(), 0)
+
+class LeaseTests(APITestCase, TestCase):
+
+    def test_create_lease(self):
+        """
+        Ensure we can create a new Lease object.
+        """
+        url = '/lease'
+        data = {"lease_start_date": "2022-10-05", "lease_end_date": '2026-10-04'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Lease.objects.count(), 1)
+
+    def test_show_lease(self):
+        """
+        Ensure we can fetch a Lease object.
+        """
+        url = '/lease'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Lease.objects.count(), 0)
+
+    def test_update_lease(self):
+        """
+        Ensure we can update a lease object.
+        """
+        url = '/lease'
+        Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        url = url +'/'+ str(Lease.objects.get().id) 
+        data = {"lease_start_date": '2022-12-05'}
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Lease.objects.count(), 1)
+
+    def test_delete_lease(self):
+        """
+        Ensure we can delete a lease object.
+        """
+        url = '/lease'
+        Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
+        url = url + '/' + str(Lease.objects.get().id)
+        response = self.client.delete(url)
+        
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Lease.objects.count(), 0)
+
+
