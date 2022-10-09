@@ -2,6 +2,10 @@ from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
 
+"""
+    This is url file to add urls for respective models.
+"""
+
 router = DefaultRouter()
 
 
