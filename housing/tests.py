@@ -318,11 +318,29 @@ class UserTests(APITestCase, TestCase):
         url = '/users'
         data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
         response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        # self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Now updating the data with updated phone number
+        url = url + '/' + str(User.objects.get().id)
         data = {'flat_id' : Flat.objects.get().id, 'contact_number': '9548751029', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
         response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(User.objects.get().contact_number, '9548751029')
+
+    def test_delete_user(self):
+        """
+        Ensure that the user can be deleted
+        """
+        # Creating the user first 
+        url = '/users'
+        data = {'flat_id' : Flat.objects.get().id, 'contact_number': '7876756487', 'contact_email': 'rohan@gmail.com',  'dob' : '2000-10-07'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+
+        # Deleting the user
+        url = url + '/' + str(User.objects.get().id)
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(User.objects.count(), 0)
