@@ -314,7 +314,7 @@ class UserTests(APITestCase, TestCase):
         """
 
         url = '/users'
-        data = {'flat_id' : str(Flat.objects.get().id), 'contact_number': '8454210259', 'contact_email': 'ameya@gmail.com', 'password' : 'password' ,'dob' : '2000-08-08'}
+        data = {'flat_id' : str(Flat.objects.get().id), 'contact_number': '8454210259', 'contact_email': 'ameya@gmail.com', 'password' : 'password' ,'dob' : '2000-10-10'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 2) 
