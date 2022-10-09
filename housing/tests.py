@@ -231,7 +231,7 @@ class ApartmentTests(APITestCase, TestCase):
 
     def test_update_apartment(self):
         """
-        Ensure we can update the apartment info
+        Ensure we can update the Apartment info
         """
         url = '/apartments'
         url = url + '/' + '1'
@@ -240,3 +240,16 @@ class ApartmentTests(APITestCase, TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Apartment.objects.count(), 1)
         self.assertEqual(Apartment.objects.get().address, '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606')
+
+    
+    def test_delete_apartment(self):
+        """
+        Ensure we can delete an Apartment Object
+        """
+
+        url = '/apartments'
+        url = url + '/' + '1'
+        data = {}
+        response = self.client.delete(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Apartment.objects.count(), 0)
