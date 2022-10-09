@@ -2,7 +2,10 @@ from django.shortcuts import render
 from rest_framework import filters, viewsets, generics
 from housing import serializers
 from housing import models
-
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
 class UserViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
@@ -47,5 +50,3 @@ class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestro
     filter_backends = (filters.SearchFilter,)
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
-
-    

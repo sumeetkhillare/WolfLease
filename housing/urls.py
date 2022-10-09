@@ -26,6 +26,4 @@ urlpatterns = [
     path('apartments/<str:pk>', views.ApartmentViewSet.as_view()),
     path('users', views.UserViewSet.as_view()),
     path('users/<str:pk>', views.UserViewSet.as_view()),
-
-   
 ]

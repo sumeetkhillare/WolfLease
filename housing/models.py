@@ -67,6 +67,9 @@ class User(models.Model):
     pref_drinking = models.CharField(default="N", max_length=2)
     pref_veg = models.CharField(default="N", max_length=2)
 
+    def __str__(self):
+        return self.contact_email
+
 class Interested(models.Model):
     apartment_id = models.ForeignKey(to=Apartment, on_delete=models.DO_NOTHING)
     flat_id = models.ForeignKey(to=Flat, on_delete=models.CASCADE)
