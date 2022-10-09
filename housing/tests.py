@@ -255,7 +255,7 @@ class ApartmentTests(APITestCase, TestCase):
         Ensure we can update the Apartment info
         """
         url = '/apartments'
-        url = url + '/' + '1'
+        url = url + '/' + str(Apartment.objects.get().id)
         data = {'address': '1130 Clarion Heights Ln, Crab Orchard Drive, Raleigh NC 27606'}
         response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
