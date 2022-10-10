@@ -115,7 +115,7 @@ https://user-images.githubusercontent.com/65619749/134620802-5fac9f0e-d697-49df-
 |`GET`|http://localhost:8000/interests | Get all Interests |
 |`DELETE`|http://localhost:8000/interests/{interestID} | Delete Interest by ID |
 
-## Searching through Owners, Apartments, Lease, Flats, User and Interested Models
+## Searching through Owners, Apartments, Lease, Flats, User Models
 
 |HTTP Method|URL|Description|
 |---|---|---|
@@ -130,9 +130,7 @@ https://user-images.githubusercontent.com/65619749/134620802-5fac9f0e-d697-49df-
 |`GET`|http://localhost:8000/flats?search={rent_per_room} | Search for Flats by rent amount |
 |`GET`|http://localhost:8000/users?search={email} | Search for an User with given email |
 |`GET`|http://localhost:8000/users?search={contact_number} | Search for a User with given contact number |
-|`GET`|http://localhost:8000/interests?search={apartment_id} | Search for a list of Users interested in the given Apartment |
-|`GET`|http://localhost:8000/interests?search={flat_id} | Search for a list of Users interested in the given flat |
-|`GET`|http://localhost:8000/interests?search={user_id} | Search for a list of Flats/Apartments that the given user is interested in |
+
 ## Team Members
 [Subodh Gujar](https://github.com/subodh30)
 
