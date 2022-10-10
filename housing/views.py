@@ -83,6 +83,7 @@ class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestro
 
     search_fields = ['address', 'facilities', 'owner_id']
     '''Search fields for Apartmentviewset''' 
+    search_fields = ['address', 'facilities']
     filter_backends = (filters.SearchFilter,)
     '''This is used for filtering Apartmentviewset'''
     queryset = models.Apartment.objects.all()
