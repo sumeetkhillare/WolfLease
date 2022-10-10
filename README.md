@@ -131,6 +131,9 @@ https://user-images.githubusercontent.com/65619749/134620802-5fac9f0e-d697-49df-
 |`GET`|http://localhost:8000/users?search={email} | Search for an User with given email |
 |`GET`|http://localhost:8000/users?search={contact_number} | Search for a User with given contact number |
 
+## Roadmap
+   - [List of Roadmap features](https://github.com/subodh30/WolfLease/issues/59)
+
 ## Team Members
 [Subodh Gujar](https://github.com/subodh30)
 
