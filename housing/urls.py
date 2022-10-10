@@ -1,12 +1,14 @@
-from django.urls import path, include
-from . import views
-from rest_framework.routers import DefaultRouter
-
 """
     This is url file to add urls for respective models.
 """
 
+from django.urls import path, include
+from . import views
+from rest_framework.routers import DefaultRouter
+
+
 router = DefaultRouter()
+'''This is default Router'''
 
 
 urlpatterns = [
@@ -24,3 +26,4 @@ urlpatterns = [
     path('users', views.UserViewSet.as_view()),
     path('users/<str:pk>', views.UserViewSet.as_view()),
 ]
+'''Rest API endpoints'''

@@ -1,3 +1,7 @@
+"""
+    This is a file to add test cases for different models.
+"""
+
 from urllib import response
 from django.test import TestCase
 from django.urls import reverse
@@ -5,9 +9,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from housing.models import *
 
-"""
-    This is a file to add test cases for different models.
-"""
+
 
 class OwnerTests(APITestCase):
     """
