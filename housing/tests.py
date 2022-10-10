@@ -209,7 +209,7 @@ class FlatTests(APITestCase, TestCase):
 
     def test_search_flat(self):
         """
-        Ensure that we can search a flat with given search paramaters
+            Ensure that we can search a flat with given search paramaters
         """
         Flat.objects.create(availability = 'True', associated_apt_id =  Apartment.objects.get(), lease_id = Lease.objects.get(), rent_per_room = 500, floor_number = 2)
         url = '/flats'
@@ -222,9 +222,14 @@ class FlatTests(APITestCase, TestCase):
 
 
 class ApartmentTests(APITestCase, TestCase):
-
+    """
+        This is Apartment test class.
+    """
     @classmethod
     def setUpTestData(cls):
+        """
+            This is setUp class method to populate the database
+        """
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
         cls.Lease = Lease.objects.create(lease_start_date='2022-10-05', lease_end_date='2026-10-04')
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")
@@ -300,9 +305,14 @@ class ApartmentTests(APITestCase, TestCase):
 
 
 class UserTests(APITestCase, TestCase):
-
+    """
+        This is User test class.
+    """
     @classmethod
-    def setUpTestData(cls):     
+    def setUpTestData(cls):
+        """
+        This is setUp class method to populate the database
+        """     
         cls.Owner = Owner.objects.create(contact_number='1234567890', contact_email='test@testing.com', password='test')
 
         cls.Apartment = Apartment.objects.create(owner_id=Owner.objects.get(), address="Stovall Dr")

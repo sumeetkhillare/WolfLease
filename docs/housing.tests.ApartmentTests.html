@@ -6,7 +6,7 @@
 
   <head>
     
-    <title>housing.tests.LeaseTests</title>
+    <title>housing.tests.ApartmentTests</title>
     <meta name="generator" content="pydoctor 22.9.1"> 
         
     </meta>
@@ -142,7 +142,7 @@
 
       <div class="thingTitle">
         <span>Class</span>
-        <code class="thisobject"><a href="housing.tests.LeaseTests.html" class="internal-link" title="This class"><wbr></wbr>Lease<wbr></wbr>Tests</a></code> 
+        <code class="thisobject"><a href="housing.tests.ApartmentTests.html" class="internal-link" title="This class"><wbr></wbr>Apartment<wbr></wbr>Tests</a></code> 
       </div>
       
       <div>
@@ -163,7 +163,7 @@
         
 
         
-            <div class="itemName"><code><a href="#test_create_lease" class="internal-link" title="housing.tests.LeaseTests.test_create_lease">test<wbr></wbr>_create<wbr></wbr>_lease</a></code>
+            <div class="itemName"><code><a href="#setUpTestData" class="internal-link" title="housing.tests.ApartmentTests.setUpTestData">set<wbr></wbr>Up<wbr></wbr>Test<wbr></wbr>Data</a></code>
             </div>
         
 
@@ -173,7 +173,7 @@
         
 
         
-            <div class="itemName"><code><a href="#test_delete_lease" class="internal-link" title="housing.tests.LeaseTests.test_delete_lease">test<wbr></wbr>_delete<wbr></wbr>_lease</a></code>
+            <div class="itemName"><code><a href="#test_create_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_create_apartment">test<wbr></wbr>_create<wbr></wbr>_apartment</a></code>
             </div>
         
 
@@ -183,7 +183,7 @@
         
 
         
-            <div class="itemName"><code><a href="#test_show_lease" class="internal-link" title="housing.tests.LeaseTests.test_show_lease">test<wbr></wbr>_show<wbr></wbr>_lease</a></code>
+            <div class="itemName"><code><a href="#test_delete_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_delete_apartment">test<wbr></wbr>_delete<wbr></wbr>_apartment</a></code>
             </div>
         
 
@@ -193,7 +193,27 @@
         
 
         
-            <div class="itemName"><code><a href="#test_update_lease" class="internal-link" title="housing.tests.LeaseTests.test_update_lease">test<wbr></wbr>_update<wbr></wbr>_lease</a></code>
+            <div class="itemName"><code><a href="#test_search_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_search_apartment">test<wbr></wbr>_search<wbr></wbr>_apartment</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_show_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_show_apartment">test<wbr></wbr>_show<wbr></wbr>_apartment</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_update_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_update_apartment">test<wbr></wbr>_update<wbr></wbr>_apartment</a></code>
             </div>
         
 
@@ -226,7 +246,7 @@
         <div class="childrenKindTitle">Classes</div>
         <ul>
     
-    <li class="">
+    <li class=" thisobject">
         
         
         
@@ -256,7 +276,7 @@
             </div>
         
 
-    </li><li class=" thisobject">
+    </li><li class="">
         
         
         
@@ -320,7 +340,7 @@
         
 
         <div class="page-header">
-          <h1 class="class"><code><code><a href="index.html" class="internal-link">housing</a></code><wbr></wbr>.<code><a href="housing.tests.html" class="internal-link" title="housing.tests">tests</a></code><wbr></wbr>.<code><a href="housing.tests.LeaseTests.html" class="internal-link" title="housing.tests.LeaseTests">LeaseTests</a></code></code></h1>
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">housing</a></code><wbr></wbr>.<code><a href="housing.tests.html" class="internal-link" title="housing.tests">tests</a></code><wbr></wbr>.<code><a href="housing.tests.ApartmentTests.html" class="internal-link" title="housing.tests.ApartmentTests">ApartmentTests</a></code></code></h1>
           <div id="showPrivate">
             <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
           </div>
@@ -331,39 +351,49 @@
         </div>
 
         <div class="extrasDocstring">
-          <p><code><span class="py-keyword">class</span> <span class="py-defname">LeaseTests</span>(APITestCase, TestCase):</code></p>
-          <p><a href="classIndex.html#housing.tests.LeaseTests">View In Hierarchy</a></p>
+          <p><code><span class="py-keyword">class</span> <span class="py-defname">ApartmentTests</span>(APITestCase, TestCase):</code></p>
+          <p><a href="classIndex.html#housing.tests.ApartmentTests">View In Hierarchy</a></p>
         </div>
 
         <div class="moduleDocstring">
-          <div><p>This is Lease test class.</p>
+          <div><p>This is Apartment test class.</p>
 </div>
         </div>
 
         <div id="splitTables">
-          <table class="children sortable" id="id41">
+          <table class="children sortable" id="id39">
   
   
-  <tr class="method">
+  <tr class="classmethod">
     
-    <td>Method</td>
-    <td><code><a href="#test_create_lease" class="internal-link" title="housing.tests.LeaseTests.test_create_lease">test<wbr></wbr>_create<wbr></wbr>_lease</a></code></td>
-    <td>Ensure we can create a new Lease object.</td>
+    <td>Class Method</td>
+    <td><code><a href="#setUpTestData" class="internal-link" title="housing.tests.ApartmentTests.setUpTestData">set<wbr></wbr>Up<wbr></wbr>Test<wbr></wbr>Data</a></code></td>
+    <td>This is setUp class method to populate the database</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_delete_lease" class="internal-link" title="housing.tests.LeaseTests.test_delete_lease">test<wbr></wbr>_delete<wbr></wbr>_lease</a></code></td>
-    <td>Ensure we can delete a lease object.</td>
+    <td><code><a href="#test_create_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_create_apartment">test<wbr></wbr>_create<wbr></wbr>_apartment</a></code></td>
+    <td>Ensure that we can create a new Apartment Object</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_show_lease" class="internal-link" title="housing.tests.LeaseTests.test_show_lease">test<wbr></wbr>_show<wbr></wbr>_lease</a></code></td>
-    <td>Ensure we can fetch a Lease object.</td>
+    <td><code><a href="#test_delete_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_delete_apartment">test<wbr></wbr>_delete<wbr></wbr>_apartment</a></code></td>
+    <td>Ensure we can delete an Apartment Object</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_update_lease" class="internal-link" title="housing.tests.LeaseTests.test_update_lease">test<wbr></wbr>_update<wbr></wbr>_lease</a></code></td>
-    <td>Ensure we can update a lease object.</td>
+    <td><code><a href="#test_search_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_search_apartment">test<wbr></wbr>_search<wbr></wbr>_apartment</a></code></td>
+    <td>Ensure that we can search Apartments with the given search parameters</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_show_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_show_apartment">test<wbr></wbr>_show<wbr></wbr>_apartment</a></code></td>
+    <td>Ensure that we are retrieve an apartment object</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_update_apartment" class="internal-link" title="housing.tests.ApartmentTests.test_update_apartment">test<wbr></wbr>_update<wbr></wbr>_apartment</a></code></td>
+    <td>Ensure we can update the Apartment info</td>
   </tr>
 </table>
           
@@ -372,20 +402,20 @@
         </div>
 
         <div id="childList">
-          <div class="basemethod">
+          <div class="baseclassmethod">
   
   
-  <a name="housing.tests.LeaseTests.test_create_lease">
+  <a name="housing.tests.ApartmentTests.setUpTestData">
     
   </a>
-  <a name="test_create_lease">
+  <a name="setUpTestData">
     
   </a>
   <div class="functionHeader">
+    @classmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">setUpTestData</span>(cls):
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_create_lease</span>(self):
-    
-    <a class="headerLink" href="#test_create_lease" title="housing.tests.LeaseTests.test_create_lease">
+    <a class="headerLink" href="#setUpTestData" title="housing.tests.ApartmentTests.setUpTestData">
       
       
       ¶
@@ -393,23 +423,23 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Ensure we can create a new Lease object.</p>
+    <div><p>This is setUp class method to populate the database</p>
 </div>
   </div>
 </div><div class="basemethod">
   
   
-  <a name="housing.tests.LeaseTests.test_delete_lease">
+  <a name="housing.tests.ApartmentTests.test_create_apartment">
     
   </a>
-  <a name="test_delete_lease">
+  <a name="test_create_apartment">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_delete_lease</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">test_create_apartment</span>(self):
     
-    <a class="headerLink" href="#test_delete_lease" title="housing.tests.LeaseTests.test_delete_lease">
+    <a class="headerLink" href="#test_create_apartment" title="housing.tests.ApartmentTests.test_create_apartment">
       
       
       ¶
@@ -417,23 +447,23 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Ensure we can delete a lease object.</p>
+    <div><p>Ensure that we can create a new Apartment Object</p>
 </div>
   </div>
 </div><div class="basemethod">
   
   
-  <a name="housing.tests.LeaseTests.test_show_lease">
+  <a name="housing.tests.ApartmentTests.test_delete_apartment">
     
   </a>
-  <a name="test_show_lease">
+  <a name="test_delete_apartment">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_show_lease</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">test_delete_apartment</span>(self):
     
-    <a class="headerLink" href="#test_show_lease" title="housing.tests.LeaseTests.test_show_lease">
+    <a class="headerLink" href="#test_delete_apartment" title="housing.tests.ApartmentTests.test_delete_apartment">
       
       
       ¶
@@ -441,23 +471,23 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Ensure we can fetch a Lease object.</p>
+    <div><p>Ensure we can delete an Apartment Object</p>
 </div>
   </div>
 </div><div class="basemethod">
   
   
-  <a name="housing.tests.LeaseTests.test_update_lease">
+  <a name="housing.tests.ApartmentTests.test_search_apartment">
     
   </a>
-  <a name="test_update_lease">
+  <a name="test_search_apartment">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_update_lease</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">test_search_apartment</span>(self):
     
-    <a class="headerLink" href="#test_update_lease" title="housing.tests.LeaseTests.test_update_lease">
+    <a class="headerLink" href="#test_search_apartment" title="housing.tests.ApartmentTests.test_search_apartment">
       
       
       ¶
@@ -465,7 +495,55 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Ensure we can update a lease object.</p>
+    <div><p>Ensure that we can search Apartments with the given search parameters</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="housing.tests.ApartmentTests.test_show_apartment">
+    
+  </a>
+  <a name="test_show_apartment">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_show_apartment</span>(self):
+    
+    <a class="headerLink" href="#test_show_apartment" title="housing.tests.ApartmentTests.test_show_apartment">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Ensure that we are retrieve an apartment object</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="housing.tests.ApartmentTests.test_update_apartment">
+    
+  </a>
+  <a name="test_update_apartment">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_update_apartment</span>(self):
+    
+    <a class="headerLink" href="#test_update_apartment" title="housing.tests.ApartmentTests.test_update_apartment">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Ensure we can update the Apartment info</p>
 </div>
   </div>
 </div>
