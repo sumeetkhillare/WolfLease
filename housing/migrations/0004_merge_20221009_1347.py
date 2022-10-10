@@ -8,6 +8,9 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
+    """
+    Updated housing Database 
+    """
 
     dependencies = [
         ('housing', '0002_alter_owner_contact_email_alter_user_contact_email'),

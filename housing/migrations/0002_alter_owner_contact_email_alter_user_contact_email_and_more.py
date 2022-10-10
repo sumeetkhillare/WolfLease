@@ -9,7 +9,9 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
+    """
+        Altering field names in Owner and User Database 
+    """
     dependencies = [
         ('housing', '0001_initial'),
     ]

@@ -10,7 +10,9 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
+    """
+        Intital Database Schema
+    """
     initial = True
 
     dependencies = [

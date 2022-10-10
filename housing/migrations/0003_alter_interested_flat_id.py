@@ -9,6 +9,9 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
+    """
+    Adding foreign keys in Interested Database 
+    """
 
     dependencies = [
         ('housing', '0002_alter_owner_contact_email_alter_user_contact_email_and_more'),

@@ -8,6 +8,9 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """
+        Modifying email field
+    """
 
     dependencies = [
         ('housing', '0001_initial'),
