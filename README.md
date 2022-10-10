@@ -12,6 +12,10 @@ Finding apartments on a lease can be a difficult and time-consuming task. We can
 
  
 
+https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-bd49-f906de124589.mp4
+
+
+
 
 - ## Built with
   <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>
