@@ -15,9 +15,6 @@ Finding apartments on a lease can be a difficult and time-consuming task. We can
 - **Libraries used:** Django
 
 
-## Visual Walkthrough:
-https://user-images.githubusercontent.com/65619749/134620802-5fac9f0e-d697-49df-876c-3f5ff7d86e38.mp4
-
 ## Getting started:
 
   - ### Prerequisite:

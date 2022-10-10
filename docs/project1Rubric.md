@@ -15,9 +15,9 @@ Total Points from Self-Assessment:
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3| [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.| 0 |  |
 | Use of version control tools|3 |
-|Use of  style checkers | 3|[pylint](https://github.com/subodh30/WolfLease/blob/master/.pylintrc)|
-| Use of code  formatters. | 3|[pylint](https://github.com/subodh30/WolfLease/blob/master/.pylintrc)|
-| Use of syntax checkers. | 3|[pylint](https://github.com/subodh30/WolfLease/blob/master/.pylintrc)|
+|Use of  style checkers | 3|Pylint used|
+| Use of code  formatters. | 3| Pylint used|
+| Use of syntax checkers. | 3|Pylint used|
 | Use of code coverage |3| [codecov tool](https://app.codecov.io/gh/subodh30/WolfLease)|
 | other automated analysis tools| 3|[codecov automation](https://github.com/subodh30/WolfLease/actions)|
 | test cases exist|3|[test directory](https://github.com/subodh30/WolfLease/blob/master/housing/tests.py)|
@@ -55,7 +55,7 @@ Total Points from Self-Assessment:
 | Does your project have a ticketing system to manage bug reports and feature requests? | 3 |
 | Is your project's ticketing system publicly visible to your users, so they can view bug reports and feature requests? | 3|
 | Is your software’s architecture and design modular? | 3 | Commands and features are separate from each other in general. |
-| Does your software use an accepted coding standard or convention? | 3 | [Pylint](https://github.com/subodh30/WolfLease/blob/master/.pylintrc) |
+| Does your software use an accepted coding standard or convention? | 3 | Pylint used |
 | Does your software allow data to be imported and exported using open data formats? * |  | N/A |
 | Does your software allow communications using open communications protocols? * |  | N/A: Discord-specific program |
 | Is your software cross-platform compatible? | 3 | Just as discord is cross-platform. |
