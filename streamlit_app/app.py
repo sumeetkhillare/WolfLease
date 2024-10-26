@@ -44,7 +44,7 @@ def dashboard():
         st.session_state.sessionid = None
         st.success("Logged out successfully")
         st.rerun()
-# Function to manage session
+        
 def fetch_session():
     if 'session_data' not in st.session_state:
         response = requests.get('http://127.0.0.1:8000/session_data', cookies={"sessionid": st.session_state.get('sessionid')})
@@ -52,8 +52,8 @@ def fetch_session():
             st.session_state['session_data'] = response.json()
         else:
             st.warning("Session expired. Please log in again.")
-            st.session_state.logged_in = False  # Set logged_in to False if session expired
-            st.rerun()  # Refresh to go to login
+            st.session_state.logged_in = False
+            st.rerun()
 
 def main():
     if 'logged_in' not in st.session_state:

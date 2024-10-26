@@ -5,9 +5,9 @@
 """ 
 
 from django.contrib import admin
-from .models import Owner, Apartment, Lease, Flat, User, Interested
+from .models import Apartment, Lease, Flat, User, Interested
 
-admin.site.register(Owner)
+# admin.site.register(Owner)
 admin.site.register(Apartment)
 admin.site.register(Lease)
 admin.site.register(Flat)
