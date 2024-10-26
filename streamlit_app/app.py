@@ -53,20 +53,19 @@ def fetch_session():
         else:
             st.warning("Session expired. Please log in again.")
             st.session_state.logged_in = False  # Set logged_in to False if session expired
-            st.rerun()  # Refresh to go to login
+            st.experimental_rerun()  # Refresh to go to login
 
-# Main function to control the app flow
 def main():
-    # Initialize session state variables if they do not exist
     if 'logged_in' not in st.session_state:
         st.session_state.logged_in = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Owners", "Interests", "Leases", "Apartments"])
-        # fetch_session()  # Fetch session data if logged in
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Add Flat", "Interests", "Leases", "Apartments"])
+        # fetch_session()
         if page == "Flats":
             flat_page()
-        # dashboard()
+        if page == "Add Flat":
+            add_flat()
     else:
         login()
 
