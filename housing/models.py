@@ -28,6 +28,14 @@ class Owner(models.Model):
     password = models.CharField(max_length=50)
     '''Password of Owner'''
 
+    # new features add
+    rating = models.FloatField(default=0)
+    '''Rating of the Owner'''
+    reviews = models.TextField(blank=True)
+    '''Reviews for the Owner'''
+    def __str__(self):
+        return self.contact_email
+
 
 class Apartment(models.Model):
     """
@@ -134,3 +142,15 @@ class Interested(models.Model):
     '''Flat ID of respective Flat'''
     user_id = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)
     '''User ID of respective User'''
+
+    class TenantsRights(models.Model):
+        """
+        This is the TenantsRights database structure.
+        """
+        title = models.CharField(max_length=255)
+        '''Title of the tenant's right'''
+        description = models.TextField()
+        '''Description of the tenant's right'''
+
+        def __str__(self):
+            return self.title
