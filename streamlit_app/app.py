@@ -53,7 +53,7 @@ def fetch_session():
         else:
             st.warning("Session expired. Please log in again.")
             st.session_state.logged_in = False  # Set logged_in to False if session expired
-            st.experimental_rerun()  # Refresh to go to login
+            st.rerun()  # Refresh to go to login
 
 def main():
     if 'logged_in' not in st.session_state:
