@@ -117,6 +117,9 @@ class User(models.Model):
     '''Drinking preference of User'''
     pref_veg = models.CharField(default="N", max_length=2)
     '''Vegetarian preference of User'''
+    last_login = models.DateTimeField(null=True, blank=True)  # Add last_login field
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
     def __str__(self):
         """

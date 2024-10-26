@@ -4,12 +4,18 @@
 
 from django.shortcuts import render
 from rest_framework import filters, viewsets, generics
+from django.contrib.auth.decorators import login_required
 from housing import serializers
+from django.contrib.auth import authenticate, login, logout
 from housing import models
+from django.utils.decorators import method_decorator
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.hashers import check_password
+from rest_framework import status
+
 
 
 # Create your views here.
@@ -89,3 +95,54 @@ class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestro
     queryset = models.Apartment.objects.all()
     '''Database query parameters Apartmentviewset'''
     serializer_class = serializers.ApartmentSerializer
+
+
+class UserLogin(APIView):
+    """
+    API View for user login
+    """
+    def post(self, request):
+        contact_email = request.data.get('contact_email')
+        password = request.data.get('password')
+
+        try:
+            user = models.User.objects.get(contact_email=contact_email)
+            print(user.password, password)
+            if password == user.password:
+                login(request, user)
+                
+                session_id = request.session.session_key
+                # session_id = "2"
+                
+                return Response(
+                    {
+                        'message': 'Login successful',
+                        'user_id': str(user.id),
+                        'sessionid': session_id
+                    },
+                    status=status.HTTP_200_OK
+                )
+                
+                # return Response({'message': 'Login successful', 'user_id': str(user.id)}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        except models.User.DoesNotExist:
+            return Response({'error': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+class UserLogout(APIView):
+    """
+    API View for user logout
+    """
+    def post(self, request):
+        # Handle logout logic, e.g., clearing session data, etc.
+        return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
+
+# @method_decorator(login_required, name='dispatch')
+class FlatViewSet(viewsets.ModelViewSet):
+    queryset = models.Flat.objects.all()
+    serializer_class = serializers.FlatSerializer
+
+# @method_decorator(login_required, name='dispatch1')
+# class OwnerViewSet(viewsets.ModelViewSet):
+#     queryset = models.Owner.objects.all()
+#     serializer_class = serializers.OwnerSerializer
