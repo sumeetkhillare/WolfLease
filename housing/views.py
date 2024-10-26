@@ -10,7 +10,10 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 class UserViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
@@ -89,3 +92,40 @@ class ApartmentViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestro
     queryset = models.Apartment.objects.all()
     '''Database query parameters Apartmentviewset'''
     serializer_class = serializers.ApartmentSerializer
+
+from rest_framework import viewsets
+from .models import Owner, Apartment, Lease, User, Flat
+from .serializers import OwnerSerializer, ApartmentSerializer, LeaseSerializer, UserSerializer, FlatSerializer
+
+class OwnerViewSet(viewsets.ModelViewSet):
+    queryset = Owner.objects.all()
+    serializer_class = OwnerSerializer
+
+class ApartmentViewSet(viewsets.ModelViewSet):
+    queryset = Apartment.objects.all()
+    serializer_class = ApartmentSerializer
+
+class FlatViewSet(viewsets.ModelViewSet):
+    queryset = Flat.objects.all()
+    serializer_class = FlatSerializer
+
+class LeaseViewSet(viewsets.ModelViewSet):
+    queryset = Lease.objects.all()
+    serializer_class = LeaseSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+
+
+
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
