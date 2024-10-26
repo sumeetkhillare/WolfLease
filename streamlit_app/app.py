@@ -18,7 +18,7 @@ def login():
             st.session_state.user_id = response.json().get('user_id')
             st.session_state.sessionid = response.json().get('sessionid')
             st.success(f"Login successful! {st.session_state.sessionid}")
-            st.experimental_rerun()  # Refresh to reflect login
+            st.rerun()  # Refresh to reflect login
         else:
             st.error("Invalid credentials")
 
@@ -43,7 +43,7 @@ def dashboard():
         st.session_state.user_id = None
         st.session_state.sessionid = None
         st.success("Logged out successfully")
-        st.experimental_rerun()
+        st.rerun()
 # Function to manage session
 def fetch_session():
     if 'session_data' not in st.session_state:
@@ -53,7 +53,7 @@ def fetch_session():
         else:
             st.warning("Session expired. Please log in again.")
             st.session_state.logged_in = False  # Set logged_in to False if session expired
-            st.experimental_rerun()  # Refresh to go to login
+            st.rerun()  # Refresh to go to login
 
 # Main function to control the app flow
 def main():
