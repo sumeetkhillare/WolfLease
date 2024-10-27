@@ -45,18 +45,18 @@ class FlatSerializer(serializers.ModelSerializer):
         fields = '__all__'
         '''Flat fields'''
 
-class OwnerSerializer(serializers.ModelSerializer):
-    """
-        This is OwnerSerializer for Owner model.
-    """
-    class Meta:
-        """
-            This class contains fields to be serialized.
-        """
-        model = models.Owner
-        '''Owner model'''
-        fields = '__all__'
-        '''Owner fields'''
+# class OwnerSerializer(serializers.ModelSerializer):
+#     """
+#         This is OwnerSerializer for Owner model.
+#     """
+#     class Meta:
+#         """
+#             This class contains fields to be serialized.
+#         """
+#         model = models.Owner
+#         '''Owner model'''
+#         fields = '__all__'
+#         '''Owner fields'''
 
 class InterestedSerializer(serializers.ModelSerializer):
     """
