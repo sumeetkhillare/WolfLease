@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import pandas as pd
 
 # Define your base URL for API requests
 BASE_URL = "http://localhost:8000/"
@@ -22,13 +23,72 @@ def login():
         else:
             st.error("Invalid credentials")
 
+# def flat_page():
+#     st.subheader("Flats")
+#     response = requests.get(f"http://localhost:8000/flats/")
+#     if response.status_code == 200:
+#         flats = response.json()
+#         for flat in flats:
+#             st.write(f"Flat ID: {flat['flat_identifier']}, Owner : {flat['ownername']}, Rent : {flat['rent_per_room']}, Apartment Name : {flat['associated_apt_name']} ,Availability : {flat['availability']}")
+#     else:
+#         st.error("Failed to fetch flats")
+
 def flat_page():
-    st.subheader("Flats")
-    response = requests.get(f"http://localhost:8000/flats/")
+    st.title("Flats Overview")
+    
+    response = requests.get("http://localhost:8000/flats/")
     if response.status_code == 200:
         flats = response.json()
-        for flat in flats:
-            st.write(f"Flat ID: {flat['id']}, Rent: {flat['rent_per_room']}, Availability: {flat['availability']}")
+        
+        # Convert the data to a pandas DataFrame
+        df = pd.DataFrame(flats)
+        
+        # Reorder and rename columns for better presentation
+        df = df[['flat_identifier', 'ownername', 'rent_per_room', 'associated_apt_name', 'availability']]
+        df.columns = ['Flat ID', 'Owner', 'Rent', 'Apartment', 'Available']
+        
+        # Apply styling
+        def highlight_availability(val):
+            color = 'green' if val else 'red'
+            return f'background-color: {color}; color: white;'
+        
+        styled_df = df.style.applymap(highlight_availability, subset=['Available'])
+        
+        # Display summary statistics
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Total Flats", len(df))
+        col2.metric("Available Flats", df['Available'].sum())
+        col3.metric("Average Rent", f"${df['Rent'].mean():.2f}")
+        
+        # Display the styled dataframe
+        st.dataframe(styled_df, use_container_width=True)
+        
+        # Add a filter for availability
+        st.subheader("Filter Flats")
+        show_available = st.checkbox("Show only available flats")
+        if show_available:
+            filtered_df = df[df['Available'] == True]
+            st.dataframe(filtered_df, use_container_width=True)
+        
+        # Display individual flat cards
+        st.subheader("Flat Details")
+        for _, flat in df.iterrows():
+            with st.expander(f"Flat {flat['Flat ID']}"):
+                col1, col2 = st.columns(2)
+                col1.write(f"**Owner:** {flat['Owner']}")
+                col1.write(f"**Apartment:** {flat['Apartment']}")
+                col2.write(f"**Rent:** ${flat['Rent']}")
+                col2.write(f"**Available:** {'Yes' if flat['Available'] else 'No'}")
+    else:
+        st.error("Failed to fetch flats data")
+
+def owner_page():
+    st.subheader("Flats")
+    response = requests.get(f"http://localhost:8000/owners/")
+    if response.status_code == 200:
+        owners = response.json()
+        for owner in owners:
+            st.write(f"")
     else:
         st.error("Failed to fetch flats")
 
@@ -64,8 +124,8 @@ def main():
         # fetch_session()
         if page == "Flats":
             flat_page()
-        if page == "Add Flat":
-            add_flat()
+        if page == "Owners":
+            owner_page()
     else:
         login()
 
