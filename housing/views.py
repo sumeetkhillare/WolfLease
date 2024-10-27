@@ -142,6 +142,11 @@ class FlatViewSet(viewsets.ModelViewSet):
     queryset = models.Flat.objects.all()
     serializer_class = serializers.FlatSerializer
 
+# @method_decorator(login_required, name='dispatch')
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
+
 # @method_decorator(login_required, name='dispatch1')
 # class OwnerViewSet(viewsets.ModelViewSet):
 #     queryset = models.Owner.objects.all()
