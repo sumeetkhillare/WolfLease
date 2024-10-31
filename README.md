@@ -11,11 +11,6 @@
 ![Autopep8 Code Check](https://img.shields.io/badge/Autopep8-checked-brightgreen)
 ![Pylint Code Check](https://img.shields.io/badge/Pylint-passing-brightgreen)
 ![Flakes Code Check](https://img.shields.io/badge/Flakes-checked-brightgreen)
-![Security Check](https://github.com/sumeetkhillare/WolfLease/actions/workflows/bandit.yml/badge.svg)
-![Code Formatter](https://github.com/sumeetkhillare/WolfLease/actions/workflows/autopep8.yml/badge.svg)
-![Syntax Check](https://github.com/sumeetkhillare/WolfLease/actions/workflows/pylint.yml/badge.svg)
-![Style Check](https://github.com/sumeetkhillare/WolfLease/actions/workflows/flake8.yml/badge.svg)
-
 
 
 <a href="https://github.com/subodh30/WolfLease/actions">![GitHub Workflow Status](https://img.shields.io/github/workflow/status/subodh30/WolfLease/Django%20CI)</a>&nbsp;&nbsp; <a href="https://opensource.org/licenses/MIT">![GitHub](https://img.shields.io/github/license/subodh30/WolfLease)</a>&nbsp;&nbsp; ![GitHub top language](https://img.shields.io/github/languages/top/subodh30/WolfLease)&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues">![GitHub issues](https://img.shields.io/github/issues/subodh30/WolfLease)</a>&nbsp;&nbsp; <a href="https://github.com/subodh30/WolfLease/issues?q=is%3Aissue+is%3Aclosed">![GitHub closed issues](https://img.shields.io/github/issues-closed/subodh30/WolfLease)</a>&nbsp;&nbsp; [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178274.svg)](https://doi.org/10.5281/zenodo.7178274)&nbsp;&nbsp; [![codecov](https://codecov.io/gh/subodh30/WolfLease/branch/master/graph/badge.svg?token=65T3AK0FVG)](https://codecov.io/gh/subodh30/WolfLease)
