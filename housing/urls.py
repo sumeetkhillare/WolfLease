@@ -10,6 +10,10 @@ from .views import UserLogin, UserLogout
 router = DefaultRouter()
 router.register(r'flats', views.FlatViewSet, basename='flat')
 '''This is default Router'''
+router.register(r'users', views.UserViewSet, basename='user')
+router.register(r'leases', views.LeaseViewSet, basename='lease')
+router.register(r'interests', views.InterestViewSet, basename='interest')
+
 
 
 urlpatterns = [
