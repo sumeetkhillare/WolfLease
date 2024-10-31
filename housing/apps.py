@@ -15,3 +15,5 @@ class HousingConfig(AppConfig):
     '''Default autofields '''
     name = 'housing'
 
+    def ready(self):
+        import housing.signals 
