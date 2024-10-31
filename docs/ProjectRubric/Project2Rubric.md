@@ -23,15 +23,15 @@ Total Points from Self-Assessment: shashank
 | evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3 |[requirements.txt](https://github.com/sumeetkhillare/WolfLease/blob/master/requirements.txt)|
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3 |
 | evidence that the members of the team are working across multiple places in the code base|3 | [commits](https://github.com/sumeetkhillare/WolfLease/commits/master/)
-|short release cycles |3| [Releases](shashank https://github.com/subodh30/WolfLease/releases)
-|The file .gitignore lists what files should not be saved to the repo. See [examples]i(https://github.com/github/gitignore) |3| shashank GH
-|The file INSTALL.md lists how to install the code |3| shashank GH
-The file LICENSE.md lists rules of usage for this repo |3| shashank GH
-The file CODE-OF-CONDUCT.md lists rules of behavior for this repo; e.g. see example  |3| shashank GH
-The file CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up; e.g. see example |3| shashank GH
-The file README.md contains all the following |3| shashank GH
-Video |3| shashank 
-DOI badge: exists. To get a Digitial Object Indentifier, regiser the project at Zenodo. DOI badges look like this: Zenodo doi badge |3| shashank GH
+|short release cycles |3| [Releases](https://github.com/sumeetkhillare/WolfLease/releases)
+|The file .gitignore lists what files should not be saved to the repo. See [examples](https://github.com/github/gitignore) |3| [Gitigmore](https://github.com/sumeetkhillare/WolfLease/blob/master/.gitignore)
+|The file INSTALL.md lists how to install the code |3| [Install.md](https://github.com/sumeetkhillare/WolfLease/blob/master/INSTALL.md)
+The file LICENSE.md lists rules of usage for this repo |3| [https://github.com/sumeetkhillare/WolfLease/blob/master/LICENSE]
+The file CODE-OF-CONDUCT.md lists rules of behavior for this repo; e.g. see example  |3| [CodeofConduct](https://github.com/sumeetkhillare/WolfLease/blob/master/CODE_OF_CONDUCT.md)
+The file CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up; e.g. see example |3| [Contributing.md](https://github.com/sumeetkhillare/WolfLease/blob/master/CONTRIBUTING.md)
+The file README.md contains all the following |3| [Readme.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)
+Video |3| sumeet video
+DOI badge: exists. To get a Digitial Object Indentifier, regiser the project at Zenodo. DOI badges look like this: Zenodo doi badge |3| sumeet GH
 Badges showing your style checkers |3| shashank GH conf files
 Badges showing your code formatters. |3| shashank GH conf files
 Badges showing your syntax checkers. |3| shashank GH conf files
