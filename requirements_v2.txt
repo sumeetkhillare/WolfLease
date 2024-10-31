@@ -34,3 +34,14 @@ referencing==0.35.1
 requests==2.32.3
 rest-framework-simplejwt==0.0.2
 rich==13.9.3
+rpds-py==0.20.0
+six==1.16.0
+smmap==5.0.1
+sqlparse==0.5.1
+streamlit==1.39.0
+tenacity==9.0.0
+toml==0.10.2
+tornado==6.4.1
+typing_extensions==4.12.2
+tzdata==2024.2
+urllib3==2.2.3

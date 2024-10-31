@@ -3,39 +3,26 @@ Total Points from Self-Assessment: shashank
 
 | Grading Points|Self-Assessment|Links|
 |-----|---------|-----|
-|workload is spread over the whole team (one team member is often Xtimes more productive than the others... but nevertheless, here is a track record that everyone is contributing a lot)| 3 | [Contributor Stats](shashank)|
-| Number of commits| 3 |[commit stats](shashank) |
-| Number of commits: by different people| 3 |[commit stats](shashank) |
-| Issues reports: there are **many**| 3 |[bug reports](shashank)|
-|  issues are being  closed| 3 | [closed tasks](shashank)|
-
-##| DOI badge: exists | 3 | [DOI](https://github.com/subodh30/WolfLease/blob/master/README.md)
-
-|Docs: doco generated , format not ugly | 3 |[README.md](shashank https://github.com/subodh30/WolfLease/blob/master/README.md) |
-|Docs: what: point descriptions of each class/function (in isolation) | 3| [README.md](shashank https://github.com/subodh30/WolfLease/blob/master/README.md)|
-|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3| [README.md](shashank https://github.com/subodh30/WolfLease/blob/master/README.md)|
-|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3| [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.| 0 |  |
-| Use of version control tools|3 |
-
-#|Use of  style checkers | 3|Pylint used|
-#| Use of code  formatters. | 3| Pylint used|
-#| Use of syntax checkers. | 3|Pylint used|
-#| Use of code coverage |3| [codecov tool](https://app.codecov.io/gh/subodh30/WolfLease)|
-#| other automated analysis tools| 3|[codecov automation](https://github.com/subodh30/WolfLease/actions)|
-
-| test cases exist|3|[test directory](shashank https://github.com/subodh30/WolfLease/blob/master/housing/tests.py)|
+|workload is spread over the whole team (one team member is often Xtimes more productive than the others... but nevertheless, here is a track record that everyone is contributing a lot)| 3 | [Contributor Stats](https://github.com/sumeetkhillare/WolfLease/graphs/contributors?from=9%2F28%2F2024)|
+| Number of commits| 3 |[commit stats](https://github.com/sumeetkhillare/WolfLease/graphs/contributors?from=9%2F28%2F2024) |
+| Number of commits: by different people| 3 |[commit stats](https://github.com/sumeetkhillare/WolfLease/graphs/contributors?from=9%2F28%2F2024) |
+| Issues reports: there are **many**| 3 |[bug reports](sumeet - add project view)|
+|  issues are being  closed| 3 | [closed tasks](sumeet same as above)|
+|Docs: doco generated , format not ugly | 3 |[README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md) |
+|Docs: what: point descriptions of each class/function (in isolation) | 3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.| 0 |  sumeet Animated video |
+| Use of version control tools|3 |sumeet (add names and codecov link etc) line-break-code-check
+| test cases exist|3|[test directory](sumeet test file https://github.com/subodh30/WolfLease/blob/master/housing/tests.py)|
 | test cases are routinely executed|3|[Git Action](shashank https://github.com/subodh30/WolfLease/actions)|
-
- #| the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|[CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
-
-| issues are discussed before they are closed| 3| [WhatsApp, Microsoft Teams](shashank https://github.com/subodh30/WolfLease/blob/master/docs) |
-| Chat channel: exists|3 | [WhatsApp, Microsoft Teams](shashank https://github.com/subodh30/WolfLease/blob/master/docs) |
-| test cases:.a large proportion of the issues related to handling failing cases.| 2| [Issues](shashank https://github.com/subodh30/WolfLease/issues?q=is%3Aissue+is%3Aclosed)
+| issues are discussed before they are closed| 3| [Discord, GH comments](https://github.com/sumeetkhillare/WolfLease/tree/master/docs) |
+| Chat channel: exists|3 | [Discord](https://github.com/sumeetkhillare/WolfLease/tree/master/docs) |
+| test cases:.a large proportion of the issues related to handling failing cases.| 2| [Issues](https://github.com/sumeetkhillare/WolfLease/issues?q=is%3Aissue+is%3Aclosed)
 | evidence that the whole team is using the same tools: everyone can get to all tools and files|3 | Use of Github throughout with frequent commits|
-| evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3 |[requirements.txt](shashank https://github.com/subodh30/WolfLease/blob/master/requirements.txt)|
+| evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3 |[requirements.txt](https://github.com/sumeetkhillare/WolfLease/blob/master/requirements.txt)|
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3 |
-| evidence that the members of the team are working across multiple places in the code base|3 |
+| evidence that the members of the team are working across multiple places in the code base|3 | [commits](https://github.com/sumeetkhillare/WolfLease/commits/master/)
 |short release cycles |3| [Releases](shashank https://github.com/subodh30/WolfLease/releases)
 |The file .gitignore lists what files should not be saved to the repo. See [examples]i(https://github.com/github/gitignore) |3| shashank GH
 |The file INSTALL.md lists how to install the code |3| shashank GH
@@ -52,7 +39,8 @@ Badges showing your code coverage tools |3| shashank GH conf files
 Badges showing any other Other automated analysis tools |3| shashank GH conf files
 
 ------ form fields
-
+| Grading Points|Self-Assessment|Links|
+|-----|---------|-----|
 | Does your website and documentation provide a clear, high-level overview of your software? | 3 | [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
 | Does your website and documentation clearly describe the type of user who should use your software? | 3| [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
 | Do you publish case studies to show how your software has been used by yourself and others? | 0 |
@@ -123,3 +111,12 @@ Badges showing any other Other automated analysis tools |3| shashank GH conf fil
 | Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? | 3 | [Issues](https://github.com/subodh30/WolfLease/issues) |
 | Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed? |  | N/A |
 | Do you make timely announcements of the deprecation of components, APIs, etc.? | 3 | We will make timely announcements|
+
+
+
+#|Use of  style checkers | 3|Pylint used|
+#| Use of code  formatters. | 3| Pylint used|
+#| Use of syntax checkers. | 3|Pylint used|
+#| Use of code coverage |3| [codecov tool](https://app.codecov.io/gh/subodh30/WolfLease)|
+#| other automated analysis tools| 3|[codecov automation](https://github.com/subodh30/WolfLease/actions)|
+ #| the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|[CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
