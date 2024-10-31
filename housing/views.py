@@ -147,6 +147,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
 
+class LeaseViewSet(viewsets.ModelViewSet):
+    queryset = models.Lease.objects.all()
+    serializer_class = serializers.LeaseSerializer
+
 # @method_decorator(login_required, name='dispatch1')
 # class OwnerViewSet(viewsets.ModelViewSet):
 #     queryset = models.Owner.objects.all()

@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+from datetime import datetime
 
 # Define your base URL for API requests
 BASE_URL = "http://localhost:8000/"
@@ -82,15 +83,163 @@ def flat_page():
     else:
         st.error("Failed to fetch flats data")
 
-def owner_page():
-    st.subheader("Flats")
-    response = requests.get(f"http://localhost:8000/owners/")
+# def user_page():
+#     st.subheader("Users")
+#     response = requests.get(f"http://localhost:8000/users/")
+#     if response.status_code == 200:
+#         users = response.json()
+#         for user in users:
+#             st.write(f"Name: {user['name']}, Type: {user['user_type']}, Email: {user['contact_email']}, DOB: {user['dob']}, Gender: {user['gender']}, Smoke: {user['pref_smoking']}, Drink: {user['pref_drinking']}, IsVeg: {user['pref_veg']}")
+#     else:
+#         st.error("Failed to fetch Users")
+
+def user_page():
+    st.title("User Management")
+
+    response = requests.get("http://localhost:8000/users/")
     if response.status_code == 200:
-        owners = response.json()
-        for owner in owners:
-            st.write(f"")
+        users = response.json()
+        df = pd.DataFrame(users)
+
+        # Separate users and owners
+        users_df = df[df['user_type'] == 'User']
+        owners_df = df[df['user_type'] == 'Owner']
+
+        # Display summary statistics
+        col1, col2 = st.columns(2)
+        col1.metric("Total Users", len(users_df))
+        col2.metric("Total Owners", len(owners_df))
+
+        # Function to display user/owner details
+        def display_user_details(df, user_type):
+            st.subheader(f"{user_type}s")
+            if len(df) > 0:
+                for _, user in df.iterrows():
+                    with st.expander(f"{user_type}: {user['name']}"):
+                        col1, col2 = st.columns(2)
+                        col1.write(f"**Email:** {user['contact_email']}")
+                        col1.write(f"**DOB:** {user['dob']}")
+                        col1.write(f"**Gender:** {user['gender']}")
+                        col2.write(f"**Smoke:** {'Yes' if user['pref_smoking'] == 'Y' else 'No'}")
+                        col2.write(f"**Drink:** {'Yes' if user['pref_drinking'] == 'Y' else 'No'}")
+                        col2.write(f"**Vegetarian:** {'Yes' if user['pref_veg'] == 'Y' else 'No'}")
+            else:
+                st.write(f"No {user_type.lower()}s found.")
+
+        # Display users and owners in separate tabs
+        tab1, tab2 = st.tabs(["Users", "Owners"])
+        
+        with tab1:
+            display_user_details(users_df, "User")
+        
+        with tab2:
+            display_user_details(owners_df, "Owner")
+
+        # Add a search functionality
+        st.subheader("Search Users/Owners")
+        search_term = st.text_input("Enter name or email to search")
+        if search_term:
+            search_results = df[df['name'].str.contains(search_term, case=False) | 
+                                df['contact_email'].str.contains(search_term, case=False)]
+            if not search_results.empty:
+                st.dataframe(search_results[['name', 'user_type', 'contact_email']], use_container_width=True)
+            else:
+                st.write("No results found.")
+
     else:
-        st.error("Failed to fetch flats")
+        st.error("Failed to fetch Users")
+
+# def lease_page():
+#     st.subheader("Leases")
+#     response = requests.get(f"http://localhost:8000/leases/")
+#     if response.status_code == 200:
+#         leases = response.json()
+#         for lease in leases:
+#             st.write(f"Lease ID: {lease['lease_identifier']}, Owner Name: {lease['ownername']}, Tenant Name: {lease['tenant_name']}, Start Date: {lease['lease_start_date']}, End Date: {lease['lease_end_date']}")
+#     else:
+#         st.error("Failed to fetch Leases")
+
+
+def lease_page():
+    st.title("Lease Management")
+
+    response = requests.get("http://localhost:8000/leases/")
+    if response.status_code == 200:
+        leases = response.json()
+        df = pd.DataFrame(leases)
+
+        # Convert date strings to datetime objects
+        df['lease_start_date'] = pd.to_datetime(df['lease_start_date'])
+        df['lease_end_date'] = pd.to_datetime(df['lease_end_date'])
+
+        # Calculate lease duration
+        df['lease_duration'] = (df['lease_end_date'] - df['lease_start_date']).dt.days
+
+        # Display summary statistics
+        st.subheader("Lease Overview")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Total Leases", len(df))
+        col2.metric("Active Leases", len(df[df['lease_end_date'] >= datetime.now()]))
+        col3.metric("Avg. Lease Duration", f"{df['lease_duration'].mean():.0f} days")
+
+        # Function to display lease details
+        def display_lease_details(lease):
+            with st.expander(f"Lease: {lease['lease_identifier']}"):
+                col1, col2 = st.columns(2)
+                col1.write(f"**Owner:** {lease['ownername']}")
+                col1.write(f"**Tenant:** {lease['tenant_name']}")
+                col1.write(f"**Start Date:** {lease['lease_start_date'].strftime('%Y-%m-%d')}")
+                col2.write(f"**End Date:** {lease['lease_end_date'].strftime('%Y-%m-%d')}")
+                col2.write(f"**Duration:** {lease['lease_duration']} days")
+                
+                # Calculate if the lease is active
+                is_active = lease['lease_end_date'] >= datetime.now()
+                status = "Active" if is_active else "Expired"
+                col2.write(f"**Status:** {status}")
+
+        # Display leases by tenant
+        st.subheader("Leases by Tenant")
+        tenants = df['tenant_name'].unique()
+        selected_tenant = st.selectbox("Select Tenant", ["All"] + list(tenants))
+        
+        if selected_tenant == "All":
+            tenant_leases = df
+        else:
+            tenant_leases = df[df['tenant_name'] == selected_tenant]
+        
+        for _, lease in tenant_leases.iterrows():
+            display_lease_details(lease)
+
+        # Display leases by apartment (assuming apartment name is part of the lease_identifier)
+        st.subheader("Leases by Apartment")
+        df['apartment'] = df['lease_identifier'].apply(lambda x: x.split('_')[0])
+        apartments = df['apartment'].unique()
+        selected_apartment = st.selectbox("Select Apartment", ["All"] + list(apartments))
+        
+        if selected_apartment == "All":
+            apartment_leases = df
+        else:
+            apartment_leases = df[df['apartment'] == selected_apartment]
+        
+        for _, lease in apartment_leases.iterrows():
+            display_lease_details(lease)
+
+        # Add a search functionality
+        st.subheader("Search Leases")
+        search_term = st.text_input("Enter lease ID, tenant name, or owner name to search")
+        if search_term:
+            search_results = df[df['lease_identifier'].str.contains(search_term, case=False) | 
+                                df['tenant_name'].str.contains(search_term, case=False) |
+                                df['ownername'].str.contains(search_term, case=False)]
+            if not search_results.empty:
+                for _, lease in search_results.iterrows():
+                    display_lease_details(lease)
+            else:
+                st.write("No results found.")
+
+    else:
+        st.error("Failed to fetch Leases")
+
 
 # Function to display the dashboard
 def dashboard():
@@ -120,12 +269,16 @@ def main():
         st.session_state.logged_in = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Add Flat", "Interests", "Leases", "Apartments"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Interests", "Leases", "Apartments"])
         # fetch_session()
         if page == "Flats":
             flat_page()
-        if page == "Owners":
-            owner_page()
+        elif page == "Users":
+            user_page()
+        elif page == "Leases":
+            lease_page()
+        # elif page == "Apartments":
+        #     apartment_page()
     else:
         login()
 
