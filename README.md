@@ -3,7 +3,7 @@
 ![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-red)
 ![Django API](https://img.shields.io/badge/Django-API-orange)
 ![API Integration](https://img.shields.io/badge/API-integration-yellow)
-![Style Check](https://github.com/xiaoqin/WolfLease/actions/workflows/flake8.yml/badge.svg)
+![Style Check](https://github.com/sumeetkhillare/WolfLease/actions/workflows/flake8.yml/badge.svg)
 ![App Version](https://img.shields.io/badge/version-v1.0-blue)
 ![Status](https://img.shields.io/badge/status-active--development-green)
 ![Run Tests](https://img.shields.io/badge/tests-passing-brightgreen)
