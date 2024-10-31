@@ -41,24 +41,24 @@ Badges showing any other Other automated analysis tools |3| shashank GH conf fil
 ------ form fields
 | Grading Points|Self-Assessment|Links|
 |-----|---------|-----|
-| Does your website and documentation provide a clear, high-level overview of your software? | 3 | [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| Does your website and documentation clearly describe the type of user who should use your software? | 3| [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
+| Does your website and documentation provide a clear, high-level overview of your software? | 3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| Does your website and documentation clearly describe the type of user who should use your software? | 3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
 | Do you publish case studies to show how your software has been used by yourself and others? | 0 |
-| Is the name of your project/software unique? |3 |
-| Is your project/software name free from trademark violations? |3 |
-| Is your software available as a package that can be deployed without building it? | 0|
-| Is your software available for free? |3 |
-| Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? |3 |
+| Is the name of your project/software unique? |3 | WolfLease
+| Is your project/software name free from trademark violations? |3 | Yes
+| Is your software available as a package that can be deployed without building it? | 0| sumeet
+| Is your software available for free? |3 | Yes
+| Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? |3 | Yes
 | Is your software hosted in an established, third-party repository like GitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)? |3 |[repo](https://github.com/subodh30/WolfLease)|
-| Is your documentation clearly available on your website or within your software? |3 | [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? | 3 |[README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software? |3 |[README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| Do you provide a comprehensive guide to all your software’s commands, functions and options? |3| [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages? | 3|[README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|[CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
-| If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation? | 3|[README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
-| Do you store your documentation under revision control with your source code? |3|
-| Do you publish your release history e.g. release data, version numbers, key features of each release etc. on your web site or in your documentation? | 3 |
-| Does your software describe how a user can get help with using your software? |3 | [CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
+| Is your documentation clearly available on your website or within your software? |3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? | 3 |[README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software? |3 |[README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| Do you provide a comprehensive guide to all your software’s commands, functions and options? |3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages? | 3|[README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|[CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
+| If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation? | 3|[README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
+| Do you store your documentation under revision control with your source code? |3| Yes [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)
+| Do you publish your release history e.g. release data, version numbers, key features of each release etc. on your web site or in your documentation? | 3 | [Releases web page sumeet]sumeet
+| Does your software describe how a user can get help with using your software? |3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
 | Does your website and documentation describe what support, if any, you provide to users and developers? |3 | [CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
 | Does your project have an e-mail address or forum that is solely for supporting users? |3 | [CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md)|
 | Are e-mails to your support e-mail address received by more than one person? | 3|
