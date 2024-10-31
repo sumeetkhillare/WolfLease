@@ -12,7 +12,6 @@ router.register(r'flats', views.FlatViewSet, basename='flat')
 router.register(r'users', views.UserViewSet, basename='user')
 router.register(r'leases', views.LeaseViewSet, basename='lease')
 router.register(r'interests', views.InterestViewSet, basename='interest')
-# router.register(r'sign', views.sign_lease, basename='sign')
 
 
 urlpatterns = [
