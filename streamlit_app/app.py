@@ -409,6 +409,71 @@ def fetch_session():
             st.session_state.logged_in = False
             st.rerun()
 
+def add_lease():
+    tenants_list = None
+    owner_list = None
+    flat_identifier_list = None
+    flat_response = requests.get("http://localhost:8000/flats/")
+    response = requests.get("http://localhost:8000/users/")
+    flat_list = None
+    if response.status_code == 200:
+        users = response.json()
+        tenants_list = [user['username'] for user in users if user['user_type'] == 'User']
+        owner_list = [user['username'] for user in users if user['user_type'] == 'Owner']
+    else:
+        st.error("Failed to fetch users")
+        return
+    if flat_response.status_code == 200:
+        flat_list = flat_response.json()
+        flat_identifier_list = [flat['flat_identifier'] for flat in flat_list]
+
+    if tenants_list and owner_list:
+        with st.form("add_lease_form"):
+            lease_start_date = st.date_input("Lease Start Date")
+            lease_end_date = st.date_input("Lease End Date")
+            flat_identifier = st.selectbox("Flat", flat_identifier_list)
+            tenant_name = st.selectbox("Tenant Name", tenants_list)
+            ownername = st.selectbox("Owner Name",owner_list)
+            submitted = st.form_submit_button("Create Lease")
+    if submitted:
+        data = {
+            'lease_start_date': lease_start_date.isoformat(),
+            'lease_end_date': lease_end_date.isoformat(),
+            'tenant_name': tenant_name,
+            'ownername': ownername,
+            'flat_identifier': flat_identifier,
+            'lease_identifier': flat_identifier+""+tenant_name
+        }
+        update_response = requests.post(f"{BASE_URL}leases/", json=data)
+        if update_response.status_code == 201:
+            st.success("Lease added successfully!")
+        else:
+            st.error(f"Error adding lease: {update_response.text}")
+
+def sign_lease():
+    response = requests.get("http://localhost:8000/users/")
+    user_list = None
+    lease_identifier_list = None
+    if response.status_code == 200:
+        users = response.json()
+        user_list = [user['username'] for user in users if user['user_type'] == 'User']
+    lease_response = requests.get("http://localhost:8000/leases")
+    if response.status_code == 200:
+        lease_response = lease_response.json()
+        lease_identifier_list = [lease['lease_identifier'] for lease in lease_response]
+    print(user_list, lease_identifier_list)
+    with st.form("sign_lease"):
+        dob = st.date_input("Enter DOB")
+        username = st.text_input("Username")
+        lease_identifier = st.selectbox("Lease", lease_identifier_list)
+        submitted = st.form_submit_button("Sign Lease")
+
+    if submitted:
+        update_response = requests.post(f"{BASE_URL}sign/{lease_identifier}/{username}/{dob}")
+        if update_response.status_code == 200:
+            st.success("Lease added successfully!")
+        else:
+            st.error(f"Error adding lease: {update_response.text}")
 
 def main():
     if 'logged_in' not in st.session_state:
@@ -418,7 +483,7 @@ def main():
         st.session_state.registering = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats", "Add Lease", "Sign Lease"])
         if page == "Flats":
             flat_page()
         elif page == "Users":
@@ -429,6 +494,10 @@ def main():
             interest_page()
         elif page == "Add Flats":
             add_flat()
+        elif page == "Add Lease":
+            add_lease()
+        elif page == "Sign Lease":
+            sign_lease()
         
         if st.sidebar.button("Logout"):
             st.session_state.logged_in = False
