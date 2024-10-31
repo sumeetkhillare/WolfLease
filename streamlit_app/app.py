@@ -131,15 +131,6 @@ def flat_page():
     else:
         st.error("Failed to fetch flats data")
 
-# def user_page():
-#     st.subheader("Users")
-#     response = requests.get(f"http://localhost:8000/users/")
-#     if response.status_code == 200:
-#         users = response.json()
-#         for user in users:
-#             st.write(f"Name: {user['name']}, Type: {user['user_type']}, Email: {user['contact_email']}, DOB: {user['dob']}, Gender: {user['gender']}, Smoke: {user['pref_smoking']}, Drink: {user['pref_drinking']}, IsVeg: {user['pref_veg']}")
-#     else:
-#         st.error("Failed to fetch Users")
 
 def user_page():
     st.title("User Management")
@@ -196,16 +187,6 @@ def user_page():
 
     else:
         st.error("Failed to fetch Users")
-
-# def lease_page():
-#     st.subheader("Leases")
-#     response = requests.get(f"http://localhost:8000/leases/")
-#     if response.status_code == 200:
-#         leases = response.json()
-#         for lease in leases:
-#             st.write(f"Lease ID: {lease['lease_identifier']}, Owner Name: {lease['ownername']}, Tenant Name: {lease['tenant_name']}, Start Date: {lease['lease_start_date']}, End Date: {lease['lease_end_date']}")
-#     else:
-#         st.error("Failed to fetch Leases")
 
 
 def lease_page():
@@ -288,16 +269,6 @@ def lease_page():
     else:
         st.error("Failed to fetch Leases")
 
-# def interest_page():
-#     st.subheader("Intrested IN")
-#     response = requests.get(f"http://localhost:8000/interests/")
-#     if response.status_code == 200:
-#         interests = response.json()
-#         for interest in interests:
-#             st.write(f"User: {interest['username']}, Interested in Flat: {interest['flat_identifier']}, Respective Apartment: {interest['apartment_name']}")
-#     else:
-#         st.error("Failed to fetch Interests Page")
-
 def interest_page():
     st.title("User Interests")
 
@@ -365,6 +336,55 @@ def interest_page():
     else:
         st.error("Failed to fetch Interests Page")
 
+def add_flat():
+    st.title("Add New Flat")
+
+    # Fetch apartments for the dropdown
+    response = requests.get(f"{BASE_URL}apartments/")
+    if response.status_code == 200:
+        apartments = response.json()
+        apartment_names = [apt['name'] for apt in apartments]
+    else:
+        st.error("Failed to fetch apartments")
+        return
+
+    # Fetch owners (users of type 'Owner') for the dropdown
+    response = requests.get(f"{BASE_URL}users/?user_type=Owner")
+    if response.status_code == 200:
+        owners = response.json()
+        owner_names = [owner['username'] for owner in owners]
+    else:
+        st.error("Failed to fetch owners")
+        return
+
+    with st.form("add_flat_form"):
+        associated_apt_name = st.selectbox("Associated Apartment", apartment_names)
+        floor_number = st.number_input("Floor Number", min_value=1, step=1)
+        flat_number = st.number_input("Flat Number", min_value=1, step=1)
+        availability = st.checkbox("Available")
+        rent_per_room = st.number_input("Rent per Room", min_value=0, step=50)
+        ownername = st.selectbox("Owner", owner_names)
+
+        submitted = st.form_submit_button("Add Flat")
+
+    if submitted:
+        flat_data = {
+            "associated_apt_name": associated_apt_name,
+            "floor_number": floor_number,
+            "flat_number": flat_number,
+            "availability": availability,
+            "rent_per_room": rent_per_room,
+            "ownername": ownername
+        }
+
+        response = requests.post(f"{BASE_URL}flats/", json=flat_data)
+
+        if response.status_code == 201:
+            st.success("Flat added successfully!")
+        else:
+            st.error(f"Error adding flat: {response.text}")
+
+
 
 # Function to display the dashboard
 def dashboard():
@@ -389,23 +409,6 @@ def fetch_session():
             st.session_state.logged_in = False
             st.rerun()
 
-# def main():
-#     if 'logged_in' not in st.session_state:
-#         st.session_state.logged_in = False
-    
-#     if st.session_state.logged_in:
-#         page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
-#         # fetch_session()
-#         if page == "Flats":
-#             flat_page()
-#         elif page == "Users":
-#             user_page()
-#         elif page == "Leases":
-#             lease_page()
-#         elif page == "Interests":
-#              interest_page()
-#     else:
-#         login()
 
 def main():
     if 'logged_in' not in st.session_state:
@@ -415,7 +418,7 @@ def main():
         st.session_state.registering = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats"])
         if page == "Flats":
             flat_page()
         elif page == "Users":
@@ -424,6 +427,8 @@ def main():
             lease_page()
         elif page == "Interests":
             interest_page()
+        elif page == "Add Flats":
+            add_flat()
         
         if st.sidebar.button("Logout"):
             st.session_state.logged_in = False

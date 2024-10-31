@@ -170,6 +170,11 @@ def sign_lease(request, lease_identifier, username, dob):
         "message": f"Lease with identifier {lease_identifier} has been signed.",
         "is_signed": lease.is_signed
     })
+
+class ApartmentViewSet(viewsets.ModelViewSet):
+    queryset = models.Apartment.objects.all()
+    serializer_class = serializers.ApartmentSerializer
+
 # @method_decorator(login_required, name='dispatch1')
 # class OwnerViewSet(viewsets.ModelViewSet):
 #     queryset = models.Owner.objects.all()
