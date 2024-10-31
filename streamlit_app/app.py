@@ -6,23 +6,71 @@ from datetime import datetime
 # Define your base URL for API requests
 BASE_URL = "http://localhost:8000/"
 
+def create_user():
+    st.title("Create a New User")
+
+    with st.form("user_form"):
+        username = st.text_input("Username")
+        name = st.text_input("Name")
+        email = st.text_input("Email")
+        contact_number = st.text_input("Contact Number")
+        password = st.text_input("Password", type="password")
+        dob = st.date_input("Date of Birth")
+        gender = st.selectbox("Gender", ["M", "F", "O"])
+        user_type = st.selectbox("User Type", ["User", "Owner"])
+        pref_smoking = st.selectbox("Smoking Preference", ["Y", "N"])
+        pref_drinking = st.selectbox("Drinking Preference", ["Y", "N"])
+        pref_veg = st.selectbox("Vegetarian Preference", ["Y", "N"])
+
+        submitted = st.form_submit_button("Create User")
+
+    if submitted:
+        user_data = {
+            "username": username,
+            "name": name,
+            "contact_email": email,
+            "contact_number": contact_number,
+            "password": password,
+            "dob": str(dob),
+            "gender": gender,
+            "user_type": user_type,
+            "pref_smoking": pref_smoking,
+            "pref_drinking": pref_drinking,
+            "pref_veg": pref_veg,
+        }
+
+        response = requests.post(f"{BASE_URL}users/", json=user_data)
+
+        if response.status_code == 201:
+            st.success("User created successfully! Please log in.")
+            st.session_state.registering = False
+        else:
+            st.error(f"Error creating user: {response.text}")
+
 # Function for user login
 def login():
     st.subheader("Login")
     contact_email = st.text_input("Email")
     password = st.text_input("Password", type='password')
 
-    if st.button("Login"):
-        response = requests.post(f"{BASE_URL}login/", json={'contact_email': contact_email, 'password': password})
-        
-        if response.status_code == 200:
-            st.session_state.logged_in = True
-            st.session_state.user_id = response.json().get('user_id')
-            st.session_state.sessionid = response.json().get('sessionid')
-            st.success(f"Login successful! {st.session_state.sessionid}")
-            st.rerun()  # Refresh to reflect login
-        else:
-            st.error("Invalid credentials")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Login"):
+            response = requests.post(f"{BASE_URL}login/", json={'contact_email': contact_email, 'password': password})
+            
+            if response.status_code == 200:
+                st.session_state.logged_in = True
+                st.session_state.user_id = response.json().get('user_id')
+                st.session_state.sessionid = response.json().get('sessionid')
+                st.success(f"Login successful!")
+                st.rerun()  # Refresh to reflect login
+            else:
+                st.error("Invalid credentials")
+    
+    with col2:
+        if st.button("Register"):
+            st.session_state.registering = True
+            st.rerun()
 
 # def flat_page():
 #     st.subheader("Flats")
@@ -341,13 +389,33 @@ def fetch_session():
             st.session_state.logged_in = False
             st.rerun()
 
+# def main():
+#     if 'logged_in' not in st.session_state:
+#         st.session_state.logged_in = False
+    
+#     if st.session_state.logged_in:
+#         page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
+#         # fetch_session()
+#         if page == "Flats":
+#             flat_page()
+#         elif page == "Users":
+#             user_page()
+#         elif page == "Leases":
+#             lease_page()
+#         elif page == "Interests":
+#              interest_page()
+#     else:
+#         login()
+
 def main():
     if 'logged_in' not in st.session_state:
         st.session_state.logged_in = False
     
+    if 'registering' not in st.session_state:
+        st.session_state.registering = False
+    
     if st.session_state.logged_in:
         page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
-        # fetch_session()
         if page == "Flats":
             flat_page()
         elif page == "Users":
@@ -355,9 +423,22 @@ def main():
         elif page == "Leases":
             lease_page()
         elif page == "Interests":
-             interest_page()
+            interest_page()
+        
+        if st.sidebar.button("Logout"):
+            st.session_state.logged_in = False
+            st.rerun()
     else:
-        login()
+        if st.session_state.registering:
+            create_user()
+            if st.button("Back to Login"):
+                st.session_state.registering = False
+                st.rerun()
+        else:
+            login()
+
 
 if __name__ == "__main__":
     main()
+
+
