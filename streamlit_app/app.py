@@ -240,6 +240,83 @@ def lease_page():
     else:
         st.error("Failed to fetch Leases")
 
+# def interest_page():
+#     st.subheader("Intrested IN")
+#     response = requests.get(f"http://localhost:8000/interests/")
+#     if response.status_code == 200:
+#         interests = response.json()
+#         for interest in interests:
+#             st.write(f"User: {interest['username']}, Interested in Flat: {interest['flat_identifier']}, Respective Apartment: {interest['apartment_name']}")
+#     else:
+#         st.error("Failed to fetch Interests Page")
+
+def interest_page():
+    st.title("User Interests")
+
+    response = requests.get("http://localhost:8000/interests/")
+    if response.status_code == 200:
+        interests = response.json()
+        df = pd.DataFrame(interests)
+
+        # Separate flat information
+        df[['flat_name', 'floor', 'flat_number']] = df['flat_identifier'].str.split('_', expand=True)
+
+        # Display summary statistics
+        st.subheader("Interest Overview")
+        col1, col2 = st.columns(2)
+        col1.metric("Total Interests", len(df))
+        col2.metric("Unique Users", df['username'].nunique())
+
+        # Filter by user
+        st.subheader("Filter by User")
+        users = ["All"] + sorted(df['username'].unique().tolist())
+        selected_user = st.selectbox("Select User", users)
+
+        if selected_user != "All":
+            filtered_df = df[df['username'] == selected_user]
+        else:
+            filtered_df = df
+
+        # Display interests
+        st.subheader("Interest Details")
+        for _, interest in filtered_df.iterrows():
+            with st.expander(f"{interest['username']} - {interest['flat_identifier']}"):
+                col1, col2 = st.columns(2)
+                col1.write(f"**User:** {interest['username']}")
+                col1.write(f"**Apartment:** {interest['apartment_name']}")
+                col2.write(f"**Flat Name:** {interest['flat_name']}")
+                col2.write(f"**Floor:** {interest['floor']}")
+                col2.write(f"**Flat Number:** {interest['flat_number']}")
+
+        # Add a search functionality
+        st.subheader("Search Interests")
+        search_term = st.text_input("Enter username or flat identifier to search")
+        if search_term:
+            search_results = df[df['username'].str.contains(search_term, case=False) | 
+                                df['flat_identifier'].str.contains(search_term, case=False)]
+            if not search_results.empty:
+                for _, interest in search_results.iterrows():
+                    with st.expander(f"{interest['username']} - {interest['flat_identifier']}"):
+                        col1, col2 = st.columns(2)
+                        col1.write(f"**User:** {interest['username']}")
+                        col1.write(f"**Apartment:** {interest['apartment_name']}")
+                        col2.write(f"**Flat Name:** {interest['flat_name']}")
+                        col2.write(f"**Floor:** {interest['floor']}")
+                        col2.write(f"**Flat Number:** {interest['flat_number']}")
+            else:
+                st.write("No results found.")
+
+        # Display interests by apartment
+        st.subheader("Interests by Apartment")
+        apartments = df['apartment_name'].unique()
+        for apartment in apartments:
+            with st.expander(f"Apartment: {apartment}"):
+                apartment_interests = df[df['apartment_name'] == apartment]
+                st.dataframe(apartment_interests[['username', 'flat_identifier']], use_container_width=True)
+
+    else:
+        st.error("Failed to fetch Interests Page")
+
 
 # Function to display the dashboard
 def dashboard():
@@ -269,7 +346,7 @@ def main():
         st.session_state.logged_in = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Interests", "Leases", "Apartments"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
         # fetch_session()
         if page == "Flats":
             flat_page()
@@ -277,8 +354,8 @@ def main():
             user_page()
         elif page == "Leases":
             lease_page()
-        # elif page == "Apartments":
-        #     apartment_page()
+        elif page == "Interests":
+             interest_page()
     else:
         login()
 
