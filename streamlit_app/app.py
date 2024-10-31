@@ -131,15 +131,6 @@ def flat_page():
     else:
         st.error("Failed to fetch flats data")
 
-# def user_page():
-#     st.subheader("Users")
-#     response = requests.get(f"http://localhost:8000/users/")
-#     if response.status_code == 200:
-#         users = response.json()
-#         for user in users:
-#             st.write(f"Name: {user['name']}, Type: {user['user_type']}, Email: {user['contact_email']}, DOB: {user['dob']}, Gender: {user['gender']}, Smoke: {user['pref_smoking']}, Drink: {user['pref_drinking']}, IsVeg: {user['pref_veg']}")
-#     else:
-#         st.error("Failed to fetch Users")
 
 def user_page():
     st.title("User Management")
@@ -196,16 +187,6 @@ def user_page():
 
     else:
         st.error("Failed to fetch Users")
-
-# def lease_page():
-#     st.subheader("Leases")
-#     response = requests.get(f"http://localhost:8000/leases/")
-#     if response.status_code == 200:
-#         leases = response.json()
-#         for lease in leases:
-#             st.write(f"Lease ID: {lease['lease_identifier']}, Owner Name: {lease['ownername']}, Tenant Name: {lease['tenant_name']}, Start Date: {lease['lease_start_date']}, End Date: {lease['lease_end_date']}")
-#     else:
-#         st.error("Failed to fetch Leases")
 
 
 def lease_page():
@@ -287,16 +268,6 @@ def lease_page():
 
     else:
         st.error("Failed to fetch Leases")
-
-# def interest_page():
-#     st.subheader("Intrested IN")
-#     response = requests.get(f"http://localhost:8000/interests/")
-#     if response.status_code == 200:
-#         interests = response.json()
-#         for interest in interests:
-#             st.write(f"User: {interest['username']}, Interested in Flat: {interest['flat_identifier']}, Respective Apartment: {interest['apartment_name']}")
-#     else:
-#         st.error("Failed to fetch Interests Page")
 
 def interest_page():
     st.title("User Interests")
@@ -389,23 +360,6 @@ def fetch_session():
             st.session_state.logged_in = False
             st.rerun()
 
-# def main():
-#     if 'logged_in' not in st.session_state:
-#         st.session_state.logged_in = False
-    
-#     if st.session_state.logged_in:
-#         page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests"])
-#         # fetch_session()
-#         if page == "Flats":
-#             flat_page()
-#         elif page == "Users":
-#             user_page()
-#         elif page == "Leases":
-#             lease_page()
-#         elif page == "Interests":
-#              interest_page()
-#     else:
-#         login()
 
 def main():
     if 'logged_in' not in st.session_state:
