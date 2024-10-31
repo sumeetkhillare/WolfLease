@@ -9,12 +9,9 @@ from .views import UserLogin, UserLogout
 
 router = DefaultRouter()
 router.register(r'flats', views.FlatViewSet, basename='flat')
-router.register(f'leases', views.LeaseViewSet, basename='lease')
-'''This is default Router'''
 router.register(r'users', views.UserViewSet, basename='user')
 router.register(r'leases', views.LeaseViewSet, basename='lease')
 router.register(r'interests', views.InterestViewSet, basename='interest')
-
 
 
 urlpatterns = [
@@ -33,5 +30,6 @@ urlpatterns = [
     # path('users/<str:pk>', views.UserViewSet.as_view()),
     path('login/', UserLogin.as_view(), name='user_login'),
     path('logout/', UserLogout.as_view(), name='user_logout'),
+    path('sign/<str:lease_identifier>/<str:username>/<str:dob>', views.sign_lease, name='sign_lease'),
 ]
 '''Rest API endpoints'''
