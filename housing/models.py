@@ -178,6 +178,6 @@ class Lease(models.Model):
     tenant_name = models.CharField(max_length=100)
     ownername = models.ForeignKey(to=User, on_delete=models.DO_NOTHING)
     lease_identifier = models.CharField(max_length=200, primary_key=True, unique=True, default=None)
-
+    is_signed = models.BooleanField(default=False)
     def __str__(self):
         return self.lease_identifier

@@ -3,6 +3,8 @@
 """
 
 from django.shortcuts import render
+from rest_framework.decorators import api_view
+from django.http import JsonResponse
 from rest_framework import filters, viewsets, generics
 from django.contrib.auth.decorators import login_required
 from housing import serializers
@@ -155,6 +157,19 @@ class InterestViewSet(viewsets.ModelViewSet):
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
+@api_view(['POST'])
+def sign_lease(request, lease_identifier, username, dob):
+    lease = models.Lease.objects.get(lease_identifier=lease_identifier)
+    user = models.User.objects.get(username=username)
+    if str(user.dob) == (dob):
+        lease.is_signed = True
+        lease.save()
+    
+    # Return a JSON response confirming the update
+    return JsonResponse({
+        "message": f"Lease with identifier {lease_identifier} has been signed.",
+        "is_signed": lease.is_signed
+    })
 # @method_decorator(login_required, name='dispatch1')
 # class OwnerViewSet(viewsets.ModelViewSet):
 #     queryset = models.Owner.objects.all()
