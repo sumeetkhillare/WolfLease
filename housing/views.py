@@ -155,6 +155,10 @@ class InterestViewSet(viewsets.ModelViewSet):
     queryset = models.Interested.objects.all()
     serializer_class = serializers.InterestedSerializer
 
+class ApartmentViewSet(viewsets.ModelViewSet):
+    queryset = models.Apartment.objects.all()
+    serializer_class = serializers.ApartmentSerializer
+
 # @method_decorator(login_required, name='dispatch1')
 # class OwnerViewSet(viewsets.ModelViewSet):
 #     queryset = models.Owner.objects.all()
