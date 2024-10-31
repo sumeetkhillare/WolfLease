@@ -450,6 +450,31 @@ def add_lease():
         else:
             st.error(f"Error adding lease: {update_response.text}")
 
+def sign_lease():
+    response = requests.get("http://localhost:8000/users/")
+    user_list = None
+    lease_identifier_list = None
+    if response.status_code == 200:
+        users = response.json()
+        user_list = [user['username'] for user in users if user['user_type'] == 'User']
+    lease_response = requests.get("http://localhost:8000/leases")
+    if response.status_code == 200:
+        lease_response = lease_response.json()
+        lease_identifier_list = [lease['lease_identifier'] for lease in lease_response]
+    print(user_list, lease_identifier_list)
+    with st.form("sign_lease"):
+        dob = st.date_input("Enter DOB")
+        username = st.text_input("Username")
+        lease_identifier = st.selectbox("Lease", lease_identifier_list)
+        submitted = st.form_submit_button("Sign Lease")
+
+    if submitted:
+        update_response = requests.post(f"{BASE_URL}sign/{lease_identifier}/{username}/{dob}")
+        if update_response.status_code == 200:
+            st.success("Lease added successfully!")
+        else:
+            st.error(f"Error adding lease: {update_response.text}")
+
 def main():
     if 'logged_in' not in st.session_state:
         st.session_state.logged_in = False
@@ -458,7 +483,7 @@ def main():
         st.session_state.registering = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats", "Add Lease"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats", "Add Lease", "Sign Lease"])
         if page == "Flats":
             flat_page()
         elif page == "Users":
@@ -471,6 +496,8 @@ def main():
             add_flat()
         elif page == "Add Lease":
             add_lease()
+        elif page == "Sign Lease":
+            sign_lease()
         
         if st.sidebar.button("Logout"):
             st.session_state.logged_in = False
