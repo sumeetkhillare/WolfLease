@@ -3,7 +3,7 @@
 ![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-red)
 ![Django API](https://img.shields.io/badge/Django-API-orange)
 ![API Integration](https://img.shields.io/badge/API-integration-yellow)
-![Style Check](https://github.com/{username}/{repo}/actions/workflows/flake8.yml/badge.svg)
+![Style Check](https://github.com/xiaoqin/WolfLease/actions/workflows/flake8.yml/badge.svg)
 ![App Version](https://img.shields.io/badge/version-v1.0-blue)
 ![Status](https://img.shields.io/badge/status-active--development-green)
 ![Run Tests](https://img.shields.io/badge/tests-passing-brightgreen)
@@ -11,7 +11,7 @@
 ![Autopep8 Code Check](https://img.shields.io/badge/Autopep8-checked-brightgreen)
 ![Pylint Code Check](https://img.shields.io/badge/Pylint-passing-brightgreen)
 ![Flakes Code Check](https://img.shields.io/badge/Flakes-checked-brightgreen)
-![Security Check](https://github.com/{username}/{repo}/actions/workflows/bandit.yml/badge.svg)
+![Security Check](https://github.com/xiaoqin/WolfLease/actions/workflows/bandit.yml/badge.svg)
 ![Code Formatter](https://github.com/{username}/{repo}/actions/workflows/autopep8.yml/badge.svg)
 ![Syntax Check](https://github.com/{username}/{repo}/actions/workflows/pylint.yml/badge.svg)
 
