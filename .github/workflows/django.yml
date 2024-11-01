@@ -32,9 +32,9 @@ jobs:
         coverage report
         coverage xml
     - name: Upload Coverage to Coveralls
-        run: coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.WOLFLEASE_SECRET }}
+      run: coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.WOLFLEASE_SECRET }}
 
 #    - name: Generate Test Coverage
 #      run: |
