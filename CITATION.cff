@@ -1,3 +1,22 @@
+cff-version: 2.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Walke"
+  given-names: "Shashank"
+  
+- family-names: "Khillare"
+  given-names: "Sumeet"
+  
+- family-names: "Pi"
+  given-names: "Xiaoqin"
+  
+title: "WolfLease V2"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2022-10-07
+url: "https://github.com/subodh30/WolfLease"
+
+
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
