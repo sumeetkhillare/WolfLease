@@ -17,7 +17,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pylint
+          pip install django
 
       - name: Run Pylint
         run: |
-          pylint --disable=all --enable=E,W streamlit_app/
+          pylint --disable=all --enable=E,W housing/apps.py
