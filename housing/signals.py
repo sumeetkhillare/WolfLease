@@ -7,6 +7,8 @@ import requests
 from django.conf import settings
 
 def send_mail(mail, subject, text):
+    if mail == "" or "@gmail.com" not in mail or subject == "" or text == "":
+        raise ValueError()
     api_key = settings.API_KEY
     domain = settings.DOMAIN
     from_address = settings.FROM
