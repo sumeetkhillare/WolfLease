@@ -36,18 +36,19 @@ https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-
 
 - **Language used:** Python
 - **Libraries used:** Django
+- **Libraries used:** Streamlit
 
 
 ## Getting started:
 
   - ### Prerequisite:
-      - Download [Python3.8](https://www.python.org/downloads/) on your system.
+      - Download [Python3.11](https://www.python.org/downloads/) on your system.
 
   - ### Run Instructions
 
      **To run the site locally:**
 
-     - Clone [this (Wolflease) github repo](https://github.com/subodh30/WolfLease).
+     - Clone [this (Wolflease) github repo](https://github.com/sumeetkhillare/WolfLease).
 
      - Navigate to project directory.
 
@@ -61,7 +62,7 @@ https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-
     
      - Build the virtual environment:
 
-        `pip install -r requirements.txt`
+        `pip install -r requirements_v2.txt`
 
         
   
@@ -69,9 +70,39 @@ https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-
      
         `python manage.py runserver`
 
+         `streamlit run app.py`
+
      - Site will be hosted at:
        `http://127.0.0.1:8000/`
 
+       `http://127.0.0.1:3000`
+
+
+## 🚀 What's New in Version 2.0
+
+We're excited to introduce a suite of powerful new features designed to revolutionize your subleasing experience!
+
+### 🏠 For Room Seekers:
+
+- **Comprehensive Flat Finder**: Explore our extensive database of available subleases with just a few clicks.
+- **Smart Filtering**: Pinpoint your perfect home using our advanced criteria-matching and date-based availability filters.
+- **Roommate Match**: Discover compatible roommates through our different profiles on portal based on personalized preferences.
+- **In-Depth Property Insights**: Access detailed information about flats and their owners to make informed decisions.
+- **Know Your Rights**: Stay informed with our dedicated tenant rights resource page.
+- **Seamless User Experience**: Enjoy a smooth, secure authentication process for hassle-free access to all features.
+
+### 🏢 For Property Owners:
+
+- **Effortless Listing Management**: Showcase your properties to a wide audience with our user-friendly listing tool.
+- **Digital Lease Signing**: Streamline your paperwork with our convenient online lease signing feature.
+- **Property Management Hub**: Take control with a comprehensive dashboard for managing properties and visualizing key data.
+
+### 💼 For All Users:
+
+- **All-in-One Platform**: Experience our newly designed website, offering a centralized hub for all your subleasing needs.
+- **Intuitive Dashboard**: Gain valuable insights and manage your activities with our sleek, information-rich user interface.
+
+Discover the future of subleasing with Wolflease 2.0 – Where finding your perfect space or tenant is just a click away!
 
 ## WolfLease Endpoints
 
@@ -153,9 +184,18 @@ https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-
 |`GET`|http://localhost:8000/users?search={contact_number} | Search for a User with given contact number |
 
 ## Roadmap
-   - [List of Roadmap features](https://github.com/subodh30/WolfLease/issues/59)
+   - [List of Roadmap features](https://github.com/sumeetkhillare/WolfLease/issues?q=is%3Aopen+is%3Aissue)
 
-## Team Members
+## WolfLease V2 by Group 44
+Team Members:
+
+1) Shashank Ajit Walke
+2) Sumeet Bapurao Khillare
+3) Xiaoqin Pi
+
+## Credits 
+Project : WolfLease forked from https://github.com/subodh30/WolfLease
+
 [Subodh Gujar](https://github.com/subodh30)
 
 [Ameya Vaichalkar](https://github.com/ameyagv)
