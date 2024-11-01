@@ -76,39 +76,39 @@ Badges showing any other Other automated analysis tools |3| shashank GH conf fil
 | Are releases tagged in the repository? * | 3 |  |
 | Is there a branch of the repository that is always stable? (i.e. tests always pass, code always builds successfully) | 3 | Master branch is always kept stable by restrciting direct commits to master|
 | Do you back-up your repository? | 3 | Github and cloned repo's developers worked on |
-| Do you provide publicly-available instructions for building your software from the source code? | 3 | [INSTALL.md](https://github.com/subodh30/WolfLease/blob/master/INSTALL.md) |
-| Can you build, or package, your software using an automated tool? | 3 | We can do this using Docker |
-| Do you provide publicly-available instructions for deploying your software? | 3 | [INSTALL.md](https://github.com/subodh30/WolfLease/blob/master/INSTALL.md) |
-| Does your documentation list all third-party dependencies? | 3 | [requirements.txt](https://github.com/subodh30/WolfLease/blob/master/requirements.txt) |
-| Does your documentation list the version number for all third-party dependencies? | 3 | [requirements.txt](https://github.com/subodh30/WolfLease/blob/master/requirements.txt) |
-| Does your software list the web address, and licences for all third-party dependencies and say whether the dependencies are mandatory or optional? | 0 |  |
-| Can you download dependencies using a dependency management tool or package manager? | 3 | [requirements.txt](https://github.com/subodh30/WolfLease/blob/master/requirements.txt) listed, evidenced in use of [Github Actions](https://github.com/subodh30/WolfLease/actions) |
-| Do you have tests that can be run after your software has been built or deployed to show whether the build or deployment has been successful? | 3 | [INSTALL.md](https://github.com/subodh30/WolfLease/blob/master/INSTALL.md) |
-| Do you have an automated test suite for your software? | 3 | [INSTALL.md](https://github.com/subodh30/WolfLease/blob/master/INSTALL.md) |
-| Do you have a framework to periodically (e.g. nightly) run your tests on the latest version of the source code? | 3 | [Github Actions](https://github.com/subodh30/WolfLease/actions) |
-| Do you use continuous integration, automatically running tests whenever changes are made to your source code? | 3 | [Github Actions](https://github.com/subodh30/WolfLease/actions) |
-| Are your test results publicly visible? | 3 | [Github Actions](https://github.com/subodh30/WolfLease/actions) |
+| Do you provide publicly-available instructions for building your software from the source code? | 3 | [INSTALL.md](https://github.com/sumeetkhillare/WolfLease/blob/master/INSTALL.md) |
+| Can you build, or package, your software using an automated tool? | 3 | We can do this using Docker | yes
+| Do you provide publicly-available instructions for deploying your software? | 3 | [INSTALL.md](https://github.com/sumeetkhillare/WolfLease/blob/master/INSTALL.md) | yes
+| Does your documentation list all third-party dependencies? | 3 | [requirements_v2.txt](https://github.com/sumeetkhillare/WolfLease/blob/master/requirements_v2.txt) | yes
+| Does your documentation list the version number for all third-party dependencies? | 3 | [requirements_v2.txt](https://github.com/sumeetkhillare/WolfLease/blob/master/requirements_v2.txt) | yes
+| Does your software list the web address, and licences for all third-party dependencies and say whether the dependencies are mandatory or optional? | 3 |  |
+| Can you download dependencies using a dependency management tool or package manager? | 3 | [requirements_v2.txt](https://github.com/sumeetkhillare/WolfLease/blob/master/requirements_v2.txt) listed, evidenced in use of [Github Actions](https://github.com/sumeetkhillare/WolfLease/actions) | yes
+| Do you have tests that can be run after your software has been built or deployed to show whether the build or deployment has been successful? | 3 | [tests](https://github.com/sumeetkhillare/WolfLease/blob/master/housing/tests.py) | yes
+| Do you have an automated test suite for your software? | 3 | [Github Actions](https://github.com/sumeetkhillare/WolfLease/actions) | yes
+| Do you have a framework to periodically (e.g. nightly) run your tests on the latest version of the source code? | 3 | [Github Actions](https://github.com/sumeetkhillare/WolfLease/actions) | yes
+| Do you use continuous integration, automatically running tests whenever changes are made to your source code? | 3 | [Github Actions](https://github.com/sumeetkhillare/WolfLease/actions) | yes
+| Are your test results publicly visible? | 3 | [Github Actions](https://github.com/sumeetkhillare/WolfLease/actions) | yes
 | Are all manually-run tests documented? | 3 | All test cases are automated and documented |
 | Does your project have resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software? | 0 |  |
-| Does your website state how many projects and users are associated with your project? | 3 | [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md)|
+| Does your website state how many projects and users are associated with your project? | 3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)| yes
 | Do you provide success stories on your website? | 0 |  |
-| Do you list your important partners and collaborators on your website? | 3 | [Insights](https://github.com/subodh30/WolfLease/pulse) |
-| Do you list your project's publications on your website or link to a resource where these are available? | 3 | [Releases](https://github.com/subodh30/WolfLease/releases) |
+| Do you list your important partners and collaborators on your website? | 3 | [Insights](https://github.com/sumeetkhillare/WolfLease/pulse) | yes
+| Do you list your project's publications on your website or link to a resource where these are available? | 3 | [Releases](https://github.com/sumeetkhillare/WolfLease/releases) | yes
 | Do you list third-party publications that refer to your software on your website or link to a resource where these are available? | 0 |  |
-| Can users subscribe to notifications to changes to your source code repository? | 3 |  |
-| If your software is developed as an open source project (and, not just a project developing open source software), do you have a governance model? | 3 |  |
-| Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? | 3 |  |
+| Can users subscribe to notifications to changes to your source code repository? | 3 | yes |
+| If your software is developed as an open source project (and, not just a project developing open source software), do you have a governance model? | 3 | yes |
+| Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? | 3 | yes |
 | Do you have a contributions policy? | 3 | [CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md) |
-| Is your contributions' policy publicly available? | 3 | [CONTRIBUTING.md](https://github.com/subodh30/WolfLease/blob/master/CONTRIBUTING.md) |
-| Do contributors keep the copyright/IP of their contributions? | 0 | Project under MIT license |
-| Does your website and documentation clearly state the copyright owners of your software and documentation? | 3 | [LICENSE](https://github.com/subodh30/WolfLease/blob/master/LICENSE) |
-| Does each of your source code files include a copyright statement? | 1 | Project under MIT license |
-| Does your website and documentation clearly state the licence of your software? | 3 | [README.md](https://github.com/subodh30/WolfLease/blob/master/README.md) |
-| Is your software released under an open source licence? | 3 | [LICENSE](https://github.com/subodh30/WolfLease/blob/master/LICENSE) |
-| Is your software released under an OSI-approved open-source licence? | 3 | [LICENSE](https://github.com/subodh30/WolfLease/blob/master/LICENSE) |
+| Is your contributions' policy publicly available? | 3 | [CONTRIBUTING.md](https://github.com/sumeetkhillare/WolfLease/blob/master/CONTRIBUTING.md) |
+| Do contributors keep the copyright/IP of their contributions? | 3 | Project under MIT license |
+| Does your website and documentation clearly state the copyright owners of your software and documentation? | 3 | [LICENSE](https://github.com/sumeetkhillare/WolfLease/blob/master/LICENSE) |
+| Does each of your source code files include a copyright statement? | 3 | Project under MIT license |
+| Does your website and documentation clearly state the licence of your software? | 3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md) |
+| Is your software released under an open source licence? | 3 | [LICENSE](https://github.com/sumeetkhillare/WolfLease/blob/master/LICENSE) |
+| Is your software released under an OSI-approved open-source licence? | 3 | [LICENSE](https://github.com/sumeetkhillare/WolfLease/blob/master/LICENSE) |
 | Does each of your source code files include a licence header?  | 0 |  |
-| Do you have a recommended citation for your software? | 3 |[CITATION.cff](https://github.com/subodh30/WolfLease/blob/master/CITATION.cff)  |
-| Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? | 3 | [Issues](https://github.com/subodh30/WolfLease/issues) |
+| Do you have a recommended citation for your software? | 3 |[CITATION.cff](https://github.com/sumeetkhillare/WolfLease/blob/master/CITATION.cff)  |
+| Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? | 3 | [Issues](https://github.com/sumeetkhillare/WolfLease/issues) |
 | Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed? |  | N/A |
 | Do you make timely announcements of the deprecation of components, APIs, etc.? | 3 | We will make timely announcements|
 
