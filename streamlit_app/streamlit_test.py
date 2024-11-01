@@ -59,6 +59,20 @@ class TestStreamlitApp(unittest.TestCase):
             self.assertIsNotNone(st.selectbox("Drinking Preference", ["Y", "N"]))
             self.assertIsNotNone(st.selectbox("Vegetarian Preference", ["Y", "N"]))
 
+    def test_create_user_form_invalid_fields(self):
+        with st.form("user_form"):
+            self.assertIsNotNone(st.text_input("Username"))
+            self.assertIsNotNone(st.text_input("Name"))
+            self.assertIsNotNone(st.text_input("Email"))
+            self.assertIsNotNone(st.text_input("Contact Number"))
+            self.assertIsNotNone(st.text_input("Password", type="password"))
+            self.assertIsNotNone(st.date_input("Date of Birth"))
+            self.assertIsNotNone(st.selectbox("Gender", ["M", "F", "O"]))
+            self.assertIsNotNone(st.selectbox("User Type", ["User", "Owner"]))
+            self.assertIsNone(st.selectbox("Smoking Preference", []))
+            self.assertIsNotNone(st.selectbox("Drinking Preference", ["Y", "N"]))
+            self.assertIsNotNone(st.selectbox("Vegetarian Preference", ["Y", "N"]))
+
     def test_login_form_fields(self):
         self.assertIsNotNone(st.text_input("Email"))
         self.assertIsNotNone(st.text_input("Password", type='password'))
@@ -70,6 +84,16 @@ class TestStreamlitApp(unittest.TestCase):
         options = ["Flats", "Users", "Leases", "Interests", "Add Lease", "Sign Lease"]
         for option in options:
             self.assertIn(option, main.__code__.co_consts)
+
+    def test_main_page_size(self):
+        size = 16
+        self.assertEqual(size, len(main.__code__.co_consts))
+
+    def test_main_page_options_has_flat(self):
+        self.assertTrue("Flats" in main.__code__.co_consts)
+
+    def test_main_page_options_has_leases(self):
+        self.assertTrue("Leases" in main.__code__.co_consts)
 
 if __name__ == '__main__':
     unittest.main()

@@ -70,6 +70,14 @@ class SignalsTestCase(TestCase):
         with self.assertRaises(ValueError):
             send_mail("invalid_email", "Test Subject", "Test Content")
 
+    def test_send_mail_with_invalid_email2(self):
+        with self.assertRaises(ValueError):
+            send_mail("invalid_email@mail.com", "Test Subject", "Test Content")
+
+    def test_send_mail_with_content_and_subject_empty(self):
+        with self.assertRaises(ValueError):
+            send_mail("invalid_email", "", "")
+
     @patch('housing.signals.send_mail')
     def test_send_lease_created_email_content(self, mock_send_mail):
         lease = Lease.objects.create(
@@ -173,6 +181,10 @@ class SignalsTestCase(TestCase):
         
         with self.assertRaises(requests.exceptions.Timeout):
             send_mail("test@gmail.com", "Test Subject", "Test Content")
+
+    def test_send_mail_wrong_mail(self):
+        with self.assertRaises(ValueError):
+            send_mail("test@test.com", "Test", "Test Content")
 
     @patch('housing.signals.send_mail')
     def test_send_lease_created_email_long_content(self, mock_send_mail):
