@@ -205,3 +205,36 @@ Project : WolfLease forked from https://github.com/subodh30/WolfLease
 [Kunal Patil](https://github.com/kunalpatil1810)
 
 [Yash Sonar](https://github.com/Yash-567)
+
+## Case Studies
+
+### 1. The Student Housing Search
+
+Shubham, a first-year university student, is looking for off-campus housing for the upcoming semester. he uses Wolflease 2.0 to streamline her search:
+
+- Using the **Comprehensive Flat Finder**, Sarah quickly browses through available subleases near him university.
+- The **Smart Filtering** feature allows him to narrow down options based on her budget and desired move-in date.
+- Sarah uses the **Roommate Match** function to find potential roommates with similar study habits and lifestyle preferences.
+- Before making a decision, Shubham consults the **Know Your Rights** page to understand his responsibilities as a tenant.
+
+**Potential Outcome:** Shubham could find suitable housing and compatible roommates more efficiently, reducing the stress of her housing search.
+
+### 2. The Property Owner's Listing
+
+Ketan, who owns several apartments near a college campus, wants to list his properties for sublease. He explores Wolflease 2.0's features:
+
+- Ketan uses the **Effortless Listing Management** tool to create detailed listings for each of his available apartments.
+- He appreciates the **Digital Lease Signing** feature, which could streamline the paperwork process for new tenants.
+- The **Property Management Hub** interests John as a way to potentially track his properties' occupancy and rental income in one place.
+
+**Potential Outcome:** Ketan could manage his properties more efficiently and potentially reach a wider audience of student renters.
+
+### 3. The Housing Office
+
+A local housing office is considering partnering with Wolflease 2.0 to better serve their off-campus student population. They are interested in:
+
+- The **All-in-One Platform** as a potential centralized hub for students to find university-approved off-campus housing.
+- The **Intuitive Dashboard**, which could provide valuable insights into student housing trends and needs.
+- The **Know Your Rights** feature, which aligns with their goal of educating students about responsible renting.
+
+**Potential Outcome:** This could potentially improve its off-campus housing services, leading to better housing experiences for students and improved relationships with local property owners.
