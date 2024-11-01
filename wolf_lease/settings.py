@@ -136,6 +136,6 @@ env = environ.Env()
 environ.Env.read_env()  # This reads the .env file
 
 # Access variables
-API_KEY = env("API_KEY")
-DOMAIN = env("DOMAIN")
-FROM = env("FROM")
+API_KEY = env("API_KEY", default="api_key")
+DOMAIN = env("DOMAIN", default="domain")
+FROM = env("FROM", default="from")
