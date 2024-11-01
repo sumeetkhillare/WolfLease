@@ -7,7 +7,7 @@
 ![Style Check](https://github.com/sumeetkhillare/WolfLease/actions/workflows/flake8.yml/badge.svg)
 ![Status](https://img.shields.io/badge/status-active--development-green)
 ![Run Tests](https://img.shields.io/badge/tests-passing-brightgreen)
-[![Coverage](https://img.shields.io/badge/coverage-91%25-brightgreen)](https://coveralls.io/github/sumeetkhillare/WolfLease)
+[![Coverage Status](https://coveralls.io/repos/github/sumeetkhillare/WolfLease/badge.svg?branch=master)](https://coveralls.io/github/sumeetkhillare/WolfLease?branch=master)
 [![AutoPep 8](https://github.com/sumeetkhillare/WolfLease/actions/workflows/autopep8.yml/badge.svg)](https://github.com/sumeetkhillare/WolfLease/actions/workflows/autopep8.yml/)
 [![Pylint](https://github.com/sumeetkhillare/WolfLease/actions/workflows/pylint.yml/badge.svg)](https://github.com/sumeetkhillare/WolfLease/actions/workflows/pylint.yml/)
 [![Flakes](https://github.com/sumeetkhillare/WolfLease/actions/workflows/flake8.yml/badge.svg)](https://github.com/sumeetkhillare/WolfLease/actions/workflows/flake8.yml/)
