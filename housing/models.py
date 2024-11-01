@@ -5,7 +5,6 @@
 '''
 
 from enum import unique
-from ssl import OP_ENABLE_MIDDLEBOX_COMPAT
 from django.db import models
 import uuid
 
