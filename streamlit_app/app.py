@@ -450,6 +450,16 @@ def add_lease():
         else:
             st.error(f"Error adding lease: {update_response.text}")
 
+
+def tenant_rights_page():
+    st.title("Tenant Rights")
+
+    # Read the HTML file
+    with open('rights.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+
+    st.components.v1.html(html_content, height=600, scrolling=True)
+
 def sign_lease():
     response = requests.get("http://localhost:8000/users/")
     user_list = None
@@ -483,7 +493,7 @@ def main():
         st.session_state.registering = False
     
     if st.session_state.logged_in:
-        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats", "Add Lease", "Sign Lease"])
+        page = st.sidebar.selectbox("Select Page", ["User Dashboard", "Flats", "Users", "Leases", "Interests", "Add Flats", "Add Lease", "Sign Lease", "Tenant Rights"])
         if page == "Flats":
             flat_page()
         elif page == "Users":
@@ -498,6 +508,8 @@ def main():
             add_lease()
         elif page == "Sign Lease":
             sign_lease()
+        elif page == "Tenant Rights":
+            tenant_rights_page()
         
         if st.sidebar.button("Logout"):
             st.session_state.logged_in = False
