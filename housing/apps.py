@@ -8,3 +8,4 @@ class HousingConfig(AppConfig):
 
     def ready(self):
         import housing.signals
+        print(housing.signals)
