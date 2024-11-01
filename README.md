@@ -1,5 +1,5 @@
 # WolfLease
-![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)
+[![DOI](https://zenodo.org/badge/864650165.svg)](https://doi.org/10.5281/zenodo.14026735)
 ![App Version](https://img.shields.io/badge/version-v2.0-blue)
 ![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-red)
 ![Django API](https://img.shields.io/badge/Django-API-orange)
