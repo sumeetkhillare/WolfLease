@@ -24,9 +24,11 @@ Finding apartments on a lease can be a difficult and time-consuming task. We can
 
 
  
+Project IDEA Video :
+https://drive.google.com/file/d/1So9pzp7Hglt7QMxl0QJm10g9hcy8bAR-/view?usp=drive_link
 
-https://user-images.githubusercontent.com/57044378/194797729-214e39d4-0f62-4468-bd49-f906de124589.mp4
-
+Project Workflow Demo : 
+https://drive.google.com/file/d/1UIDhQFq20Ftor684CyYbFY8sy3HyM18s/view?usp=drive_link
 
 
 
