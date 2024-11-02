@@ -1,6 +1,8 @@
 # Project Rubric
 Total Points from Self-Assessment: 311/312
 
+Individual Team member assesment pdf is on link :- https://drive.google.com/file/d/1YoC-ckvWOllOFB5i812R03sA2MXe3-D6/view?usp=drive_link
+
 | Grading Points|Self-Assessment|Links|
 |-----|---------|-----|
 |workload is spread over the whole team (one team member is often Xtimes more productive than the others... but nevertheless, here is a track record that everyone is contributing a lot)| 3 | [Contributor Stats](https://github.com/sumeetkhillare/WolfLease/graphs/contributors?from=9%2F28%2F2024)|
