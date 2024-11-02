@@ -1,5 +1,5 @@
 # Project Rubric
-Total Points from Self-Assessment: shashank
+Total Points from Self-Assessment: 311/312
 
 | Grading Points|Self-Assessment|Links|
 |-----|---------|-----|
@@ -37,10 +37,6 @@ Badges showing your code formatters. |3| (README.md)[https://github.com/sumeetkh
 Badges showing your syntax checkers. |3| (README.md)[https://github.com/sumeetkhillare/WolfLease/blob/master/README.md]
 Badges showing your code coverage tools |3| (README.md)[https://github.com/sumeetkhillare/WolfLease/blob/master/README.md]
 Badges showing any other Other automated analysis tools |3| (README.md)[https://github.com/sumeetkhillare/WolfLease/blob/master/README.md]
-
------- form fields
-| Grading Points|Self-Assessment|Links|
-|-----|---------|-----|
 | Does your website and documentation provide a clear, high-level overview of your software? | 3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
 | Does your website and documentation clearly describe the type of user who should use your software? | 3| [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
 | Do you publish case studies to show how your software has been used by yourself and others? | 3 | [README.md](https://github.com/sumeetkhillare/WolfLease/blob/master/README.md)|
