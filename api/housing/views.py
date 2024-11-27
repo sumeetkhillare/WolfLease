@@ -17,7 +17,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
 from rest_framework import status
-
+from django.shortcuts import get_object_or_404
+from rest_framework.generics import get_object_or_404
+from .models import Review, Flat, User
+from .serializers import ReviewSerializer
 
 
 # # Create your views here.
@@ -110,7 +113,7 @@ class UserLogin(APIView):
         try:
             user = models.User.objects.get(contact_email=contact_email)
             print(user.password, password)
-            if password == user.password:
+            if check_password(password, user.password):
                 login(request, user)
                 
                 session_id = request.session.session_key
@@ -175,7 +178,15 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     queryset = models.Apartment.objects.all()
     serializer_class = serializers.ApartmentSerializer
 
-# @method_decorator(login_required, name='dispatch1')
-# class OwnerViewSet(viewsets.ModelViewSet):
-#     queryset = models.Owner.objects.all()
-#     serializer_class = serializers.OwnerSerializer
+class ReviewListCreateView(generics.ListCreateAPIView):
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        flat_id = self.kwargs['flat_id']
+        flat = get_object_or_404(Flat, id=flat_id)
+        return Review.objects.filter(flat=flat)
+
+    def perform_create(self, serializer):
+        flat_id = self.kwargs['flat_id']
+        flat = get_object_or_404(Flat, id=flat_id)
+        serializer.save(flat=flat)

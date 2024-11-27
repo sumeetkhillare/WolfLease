@@ -7,8 +7,7 @@ from housing import models
 from rest_framework.authtoken.models import Token 
 from rest_framework.validators import ValidationError
 from django.contrib.auth.hashers import make_password
-
-
+from .models import Review
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -97,3 +96,11 @@ class ApartmentSerializer(serializers.ModelSerializer):
         '''Apartment model'''
         fields = '__all__'
         '''Apartment fields'''
+
+from .models import Review
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['flat', 'rating', 'comment']
+        read_only_fields = ['flat']

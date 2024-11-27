@@ -16,20 +16,9 @@ router.register(r'apartments', views.ApartmentViewSet, basename='apartment')
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('owners', views.OwnerViewSet.as_view()),
-    # path('owners/<str:pk>', views.OwnerViewSet.as_view()),
-    # path('flats', views.FlatViewSet.as_view()),
-    # path('flats/<str:pk>', views.FlatViewSet.as_view()),
-    # path('lease', views.LeaseViewSet.as_view()),
-    # path('lease/<str:pk>', views.LeaseViewSet.as_view()),
-    # path('interests', views.InterestedViewSet.as_view()),
-    # path('interests/<str:pk>', views.InterestedViewSet.as_view()),
-    # path('apartments', views.ApartmentViewSet.as_view()),
-    # path('apartments/<str:pk>', views.ApartmentViewSet.as_view()),
-    # path('users', views.UserViewSet.as_view()),
-    # path('users/<str:pk>', views.UserViewSet.as_view()),
     path('login/', UserLogin.as_view(), name='user_login'),
     path('logout/', UserLogout.as_view(), name='user_logout'),
     path('sign/<str:lease_identifier>/<str:username>/<str:dob>', views.sign_lease, name='sign_lease'),
+    path('flats/<uuid:flat_id>/reviews/', views.ReviewListCreateView.as_view(), name='flat_reviews'),
 ]
 '''Rest API endpoints'''

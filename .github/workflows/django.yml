@@ -29,9 +29,6 @@ jobs:
     - name: Run Tests
       run: |
         coverage run manage.py test housing.test_email_notification
-        coverage report
-        coverage xml
-    - name: Upload Coverage to Coveralls
-      run: coveralls
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.WOLFLEASE_SECRET }}
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v2.3.4
+            

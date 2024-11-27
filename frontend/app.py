@@ -2,9 +2,10 @@ import streamlit as st
 import requests
 import pandas as pd
 from datetime import datetime
+import os
 
 # Define your base URL for API requests
-BASE_URL = "http://localhost:8000/"
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000/")
 
 def create_user():
     st.title("Create a New User")
@@ -72,62 +73,111 @@ def login():
             st.session_state.registering = True
             st.rerun()
 
-# def flat_page():
-#     st.subheader("Flats")
-#     response = requests.get(f"http://localhost:8000/flats/")
-#     if response.status_code == 200:
-#         flats = response.json()
-#         for flat in flats:
-#             st.write(f"Flat ID: {flat['flat_identifier']}, Owner : {flat['ownername']}, Rent : {flat['rent_per_room']}, Apartment Name : {flat['associated_apt_name']} ,Availability : {flat['availability']}")
-#     else:
-#         st.error("Failed to fetch flats")
-
 def flat_page():
-    st.title("Flats Overview")
-    
-    response = requests.get("http://localhost:8000/flats/")
+    # Define CSS for different rating levels
+    review_box_style = """
+    <style>
+    .review-box {
+        border: 1px solid #ddd;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Add shadow */
+    }
+    .rating-high {
+        background-color: #006400;  /* Dark green */
+    }
+    .rating-medium {
+        background-color: #FF8C00;  /* Dark orange */
+    }
+    .rating-low {
+        background-color: #B22222;  /* Firebrick red */
+    }
+    </style>
+    """
+    st.markdown(review_box_style, unsafe_allow_html=True)
+
+    current_user_id = "actual_user_id"
+
+    # Fetch flats data
+    response = requests.get(f"{BASE_URL}flats/")
     if response.status_code == 200:
         flats = response.json()
-        
-        # Convert the data to a pandas DataFrame
-        df = pd.DataFrame(flats)
-        
-        # Reorder and rename columns for better presentation
-        df = df[['flat_identifier', 'ownername', 'rent_per_room', 'associated_apt_name', 'availability']]
-        df.columns = ['Flat ID', 'Owner', 'Rent', 'Apartment', 'Available']
-        
-        # Apply styling
-        def highlight_availability(val):
-            color = 'green' if val else 'red'
-            return f'background-color: {color}; color: white;'
-        
-        styled_df = df.style.applymap(highlight_availability, subset=['Available'])
-        
-        # Display summary statistics
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Total Flats", len(df))
-        col2.metric("Available Flats", df['Available'].sum())
-        col3.metric("Average Rent", f"${df['Rent'].mean():.2f}")
-        
-        # Display the styled dataframe
-        st.dataframe(styled_df, use_container_width=True)
-        
-        # Add a filter for availability
-        st.subheader("Filter Flats")
-        show_available = st.checkbox("Show only available flats")
-        if show_available:
-            filtered_df = df[df['Available'] == True]
-            st.dataframe(filtered_df, use_container_width=True)
-        
-        # Display individual flat cards
-        st.subheader("Flat Details")
-        for _, flat in df.iterrows():
-            with st.expander(f"Flat {flat['Flat ID']}"):
+        for flat in flats:
+            with st.expander(f"Flat {flat['flat_identifier']}"):
                 col1, col2 = st.columns(2)
-                col1.write(f"**Owner:** {flat['Owner']}")
-                col1.write(f"**Apartment:** {flat['Apartment']}")
-                col2.write(f"**Rent:** ${flat['Rent']}")
-                col2.write(f"**Available:** {'Yes' if flat['Available'] else 'No'}")
+                col1.write(f"**Owner:** {flat['ownername']}")
+                col1.write(f"**Apartment:** {flat['associated_apt_name']}")
+                col2.write(f"**Rent:** ${flat['rent_per_room']}")
+                col2.write(f"**Available:** {'Yes' if flat['availability'] else 'No'}")
+
+                # Add a filter selection widget with a unique key
+                rating_filter = st.selectbox(
+                    "Filter reviews by rating:",
+                    options=["All", "Best", "Average", "Worst"],
+                    index=0,
+                    key=f"rating_filter_{flat['id']}"
+                )
+
+                # Fetch reviews for this flat
+                reviews_response = requests.get(f"{BASE_URL}flats/{flat['id']}/reviews/")
+                if reviews_response.status_code == 200:
+                    reviews = reviews_response.json()
+                    st.subheader("Reviews")
+                    if reviews:
+                        # Apply the filter to the reviews
+                        if rating_filter == "Best":
+                            reviews = [review for review in reviews if review['rating'] >= 4]
+                        elif rating_filter == "Average":
+                            reviews = [review for review in reviews if review['rating'] == 3]
+                        elif rating_filter == "Worst":
+                            reviews = [review for review in reviews if review['rating'] <= 2]
+
+                        for review in reviews:
+                            rating_class = (
+                                "rating-high" if review['rating'] >= 4
+                                else "rating-medium" if review['rating'] == 3
+                                else "rating-low"
+                            )
+                            st.markdown(
+                                f"""
+                                <div class="review-box {rating_class}">
+                                    <p><strong>Rating:</strong> {review['rating']}/5</p>
+                                    <p><strong>Comment:</strong> {review['comment']}</p>
+                                </div>
+                                """,
+                                unsafe_allow_html=True
+                            )
+                    else:
+                        st.write("No reviews yet.")
+                else:
+                    st.error("Failed to fetch reviews.")
+
+                # Review submission form
+                st.subheader("Submit a Review")
+                with st.form(key=f"review_form_{flat['flat_identifier']}"):
+                    rating = st.slider("Rating", 1, 5, 3)
+                    comment = st.text_area("Comment")
+                    submit_button = st.form_submit_button("Submit Review")
+
+                    if submit_button:
+                        # Make POST request to submit the review
+                        review_data = {
+                            "flat": flat['id'],
+                            "user": current_user_id,  # Replace with the actual user ID
+                            "rating": rating,
+                            "comment": comment
+                        }
+                        reviews_response = requests.post(
+                            f"{BASE_URL}flats/{flat['id']}/reviews/",
+                            json=review_data
+                        )
+
+                        if reviews_response.status_code == 201:
+                            st.success("Review submitted successfully!")
+                        else:
+                            st.error(f"Failed to submit review: {reviews_response.json()}")
     else:
         st.error("Failed to fetch flats data")
 
@@ -135,7 +185,7 @@ def flat_page():
 def user_page():
     st.title("User Management")
 
-    response = requests.get("http://localhost:8000/users/")
+    response = requests.get(f"{BASE_URL}users/")
     if response.status_code == 200:
         users = response.json()
         df = pd.DataFrame(users)
@@ -192,7 +242,7 @@ def user_page():
 def lease_page():
     st.title("Lease Management")
 
-    response = requests.get("http://localhost:8000/leases/")
+    response = requests.get(f"{BASE_URL}leases/")
     if response.status_code == 200:
         leases = response.json()
         df = pd.DataFrame(leases)
@@ -272,7 +322,7 @@ def lease_page():
 def interest_page():
     st.title("User Interests")
 
-    response = requests.get("http://localhost:8000/interests/")
+    response = requests.get(f"{BASE_URL}interests/")
     if response.status_code == 200:
         interests = response.json()
         df = pd.DataFrame(interests)
@@ -413,8 +463,8 @@ def add_lease():
     tenants_list = None
     owner_list = None
     flat_identifier_list = None
-    flat_response = requests.get("http://localhost:8000/flats/")
-    response = requests.get("http://localhost:8000/users/")
+    flat_response = requests.get(f"{BASE_URL}flats/")
+    response = requests.get(f"{BASE_URL}users/")
     flat_list = None
     if response.status_code == 200:
         users = response.json()
@@ -435,20 +485,20 @@ def add_lease():
             tenant_name = st.selectbox("Tenant Name", tenants_list)
             ownername = st.selectbox("Owner Name",owner_list)
             submitted = st.form_submit_button("Create Lease")
-    if submitted:
-        data = {
-            'lease_start_date': lease_start_date.isoformat(),
-            'lease_end_date': lease_end_date.isoformat(),
-            'tenant_name': tenant_name,
-            'ownername': ownername,
-            'flat_identifier': flat_identifier,
-            'lease_identifier': flat_identifier+""+tenant_name
-        }
-        update_response = requests.post(f"{BASE_URL}leases/", json=data)
-        if update_response.status_code == 201:
-            st.success("Lease added successfully!")
-        else:
-            st.error(f"Error adding lease: {update_response.text}")
+        if submitted:
+            data = {
+                'lease_start_date': lease_start_date.isoformat(),
+                'lease_end_date': lease_end_date.isoformat(),
+                'tenant_name': tenant_name,
+                'ownername': ownername,
+                'flat_identifier': flat_identifier,
+                'lease_identifier': flat_identifier+""+tenant_name
+            }
+            update_response = requests.post(f"{BASE_URL}leases/", json=data)
+            if update_response.status_code == 201:
+                st.success("Lease added successfully!")
+            else:
+                st.error(f"Error adding lease: {update_response.text}")
 
 
 def tenant_rights_page():
@@ -461,13 +511,13 @@ def tenant_rights_page():
     st.components.v1.html(html_content, height=600, scrolling=True)
 
 def sign_lease():
-    response = requests.get("http://localhost:8000/users/")
+    response = requests.get(f"{BASE_URL}users/")
     user_list = None
     lease_identifier_list = None
     if response.status_code == 200:
         users = response.json()
         user_list = [user['username'] for user in users if user['user_type'] == 'User']
-    lease_response = requests.get("http://localhost:8000/leases")
+    lease_response = requests.get(f"{BASE_URL}leases")
     if response.status_code == 200:
         lease_response = lease_response.json()
         lease_identifier_list = [lease['lease_identifier'] for lease in lease_response]
@@ -522,6 +572,7 @@ def main():
                 st.rerun()
         else:
             login()
+
 
 
 if __name__ == "__main__":
